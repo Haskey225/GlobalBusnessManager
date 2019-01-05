@@ -47,17 +47,32 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data.EntityFramework, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySQL.Data.EntityFrameworkCore, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySQL.Data.EntityFrameworkCore.Design, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Web, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="system.windows.forms.ribbon">
+      <HintPath>..\..\..\..\..\..\Program Files\system.windows.forms.ribbon.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="WooCommerce.NET">
+      <HintPath>..\..\..\..\..\..\Program Files\WooCommerce.NET.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -73,13 +88,67 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.vb">
+    <Compile Include="model\storyClass\Story.vb" />
+    <Compile Include="model\storyClass\StoryManager.vb" />
+    <Compile Include="view\windows\AppConfig.Designer.vb">
+      <DependentUpon>AppConfig.vb</DependentUpon>
+    </Compile>
+    <Compile Include="view\windows\AppConfig.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="Controller\DataGridController.vb" />
+    <Compile Include="model\client\Client.vb" />
+    <Compile Include="model\client\ClientManager.vb" />
+    <Compile Include="model\commande\BasicCommand.vb" />
+    <Compile Include="model\commande\BasicCommandManager.vb" />
+    <Compile Include="model\commande\Command.vb" />
+    <Compile Include="model\commande\CommandManager.vb" />
+    <Compile Include="model\datagrid.manager\DataGridManager.vb" />
+    <Compile Include="model\fournisseur\Fournisseur.vb" />
+    <Compile Include="model\fournisseur\FournisseurManager.vb" />
+    <Compile Include="model\stock\DastBoad.vb" />
+    <Compile Include="view\StoryView\StoryView.Designer.vb">
+      <DependentUpon>StoryView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="view\StoryView\StoryView.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="view\windows\AddClient.Designer.vb">
+      <DependentUpon>AddClient.vb</DependentUpon>
+    </Compile>
+    <Compile Include="view\windows\AddClient.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\windows\AddCommandWin.Designer.vb">
+      <DependentUpon>AddCommandWin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="view\windows\AddCommandWin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\windows\Connexionbeeshop.Designer.vb">
+      <DependentUpon>Connexionbeeshop.vb</DependentUpon>
+    </Compile>
+    <Compile Include="view\windows\Connexionbeeshop.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="model\connexion.manager\DisableEnable.vb" />
+    <Compile Include="view\windows\Ajouter une commande.Designer.vb">
+      <DependentUpon>Ajouter une commande.vb</DependentUpon>
+    </Compile>
+    <Compile Include="view\windows\Ajouter une commande.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\windows\MainController.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\windows\MainController.Designer.vb">
+      <DependentUpon>MainController.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="model\connexion.manager\Connexion.vb" />
+    <Compile Include="model\produit\Product.vb" />
+    <Compile Include="model\produit\ProductManager.vb" />
+    <Compile Include="model\stock\StockManager.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -95,13 +164,49 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="view\Product\Ajoute_Un_Produit.Designer.vb">
+      <DependentUpon>Ajoute_Un_Produit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="view\Product\Ajoute_Un_Produit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\Product\EditProduct.Designer.vb">
+      <DependentUpon>EditProduct.vb</DependentUpon>
+    </Compile>
+    <Compile Include="view\Product\EditProduct.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="view\windows\AppConfig.resx">
+      <DependentUpon>AppConfig.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\windows\AddClient.resx">
+      <DependentUpon>AddClient.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\windows\AddCommandWin.resx">
+      <DependentUpon>AddCommandWin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\windows\Connexionbeeshop.resx">
+      <DependentUpon>Connexionbeeshop.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\windows\Ajouter une commande.resx">
+      <DependentUpon>Ajouter une commande.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\windows\MainController.resx">
+      <DependentUpon>MainController.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\Product\Ajoute_Un_Produit.resx">
+      <DependentUpon>Ajoute_Un_Produit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\Product\EditProduct.resx">
+      <DependentUpon>EditProduct.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +220,10 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
