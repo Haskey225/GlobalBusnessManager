@@ -88,8 +88,25 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="model\stock\InObject.vb" />
+    <Compile Include="model\stock\OIDataGridManager.vb" />
+    <Compile Include="model\stock\OutObject.vb" />
+    <Compile Include="model\stock\Stock.vb" />
     <Compile Include="model\storyClass\Story.vb" />
     <Compile Include="model\storyClass\StoryManager.vb" />
+    <Compile Include="model\stock\Module.vb" />
+    <Compile Include="view\Stock_and_Story\AddInObject.Designer.vb">
+      <DependentUpon>AddInObject.vb</DependentUpon>
+    </Compile>
+    <Compile Include="view\Stock_and_Story\AddInObject.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\Stock_and_Story\AddOutObject.Designer.vb">
+      <DependentUpon>AddOutObject.vb</DependentUpon>
+    </Compile>
+    <Compile Include="view\Stock_and_Story\AddOutObject.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="view\windows\AppConfig.Designer.vb">
       <DependentUpon>AppConfig.vb</DependentUpon>
     </Compile>
@@ -107,10 +124,10 @@
     <Compile Include="model\fournisseur\Fournisseur.vb" />
     <Compile Include="model\fournisseur\FournisseurManager.vb" />
     <Compile Include="model\stock\DastBoad.vb" />
-    <Compile Include="view\StoryView\StoryView.Designer.vb">
-      <DependentUpon>StoryView.vb</DependentUpon>
+    <Compile Include="view\Stock_and_Story\StockManagerView.Designer.vb">
+      <DependentUpon>StockManagerView.vb</DependentUpon>
     </Compile>
-    <Compile Include="view\StoryView\StoryView.vb">
+    <Compile Include="view\Stock_and_Story\StockManagerView.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="view\windows\AddClient.Designer.vb">
@@ -176,8 +193,23 @@
     <Compile Include="view\Product\EditProduct.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="WaiteWin.Designer.vb">
+      <DependentUpon>WaiteWin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WaiteWin.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="view\Stock_and_Story\AddInObject.resx">
+      <DependentUpon>AddInObject.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\Stock_and_Story\AddOutObject.resx">
+      <DependentUpon>AddOutObject.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\Stock_and_Story\StockManagerView.resx">
+      <DependentUpon>StockManagerView.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\windows\AppConfig.resx">
       <DependentUpon>AppConfig.vb</DependentUpon>
     </EmbeddedResource>
@@ -207,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\Product\EditProduct.resx">
       <DependentUpon>EditProduct.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaiteWin.resx">
+      <DependentUpon>WaiteWin.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

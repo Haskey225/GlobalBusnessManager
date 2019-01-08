@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class MainController
     Inherits System.Windows.Forms.Form
 
     'Form remplace la méthode Dispose pour nettoyer la liste des composants.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class MainController
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée à l'aide du Concepteur Windows Form.  
     'Ne la modifiez pas à l'aide de l'éditeur de code.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainController))
@@ -137,6 +137,7 @@ Partial Class MainController
         Me.quantity = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.APP_CONFIG = New System.Windows.Forms.RibbonButton()
         Me.UpDateTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.BT_STOCK_MANAGER = New System.Windows.Forms.RibbonButton()
         CType(Me.VU_RAPPORT, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.STAT_BAR.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -542,6 +543,7 @@ Partial Class MainController
         Me.GP_PRODUIT.Items.Add(Me.BT_DEL_PRODUCT)
         Me.GP_PRODUIT.Items.Add(Me.BT_EDIT_PRODUCT)
         Me.GP_PRODUIT.Items.Add(Me.BT_PRODUCT_STOCK)
+        Me.GP_PRODUIT.Items.Add(Me.BT_STOCK_MANAGER)
         Me.GP_PRODUIT.Tag = Nothing
         Me.GP_PRODUIT.Text = "Produit"
         '
@@ -1101,6 +1103,7 @@ Partial Class MainController
         Me.STOCK_LIST.Name = "STOCK_LIST"
         Me.STOCK_LIST.Size = New System.Drawing.Size(878, 439)
         Me.STOCK_LIST.TabIndex = 5
+        Me.STOCK_LIST.Visible = False
         '
         'id_stock
         '
@@ -1340,6 +1343,20 @@ Partial Class MainController
         '
         Me.UpDateTimer.Interval = 1000
         '
+        'BT_STOCK_MANAGER
+        '
+        Me.BT_STOCK_MANAGER.AltKey = Nothing
+        Me.BT_STOCK_MANAGER.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Down
+        Me.BT_STOCK_MANAGER.DropDownArrowSize = New System.Drawing.Size(5, 3)
+        Me.BT_STOCK_MANAGER.Image = CType(resources.GetObject("BT_STOCK_MANAGER.Image"), System.Drawing.Image)
+        Me.BT_STOCK_MANAGER.SmallImage = CType(resources.GetObject("BT_STOCK_MANAGER.SmallImage"), System.Drawing.Image)
+        Me.BT_STOCK_MANAGER.Style = System.Windows.Forms.RibbonButtonStyle.Normal
+        Me.BT_STOCK_MANAGER.Tag = Nothing
+        Me.BT_STOCK_MANAGER.Text = "Gestion de stock"
+        Me.BT_STOCK_MANAGER.ToolTip = Nothing
+        Me.BT_STOCK_MANAGER.ToolTipImage = Nothing
+        Me.BT_STOCK_MANAGER.ToolTipTitle = Nothing
+        '
         'MainController
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1487,4 +1504,5 @@ Partial Class MainController
     Friend WithEvents product_stat As DataGridViewTextBoxColumn
     Friend WithEvents product_quantite As DataGridViewTextBoxColumn
     Private WithEvents BT_VUE_COM As RibbonButton
+    Friend WithEvents BT_STOCK_MANAGER As RibbonButton
 End Class

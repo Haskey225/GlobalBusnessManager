@@ -1,5 +1,6 @@
 ﻿Public Class BasicCommand
     Private mId As Integer
+    Private mDate As Date
     Private mProductList As Product
     Private mClientName As String
     Private mClientContact As String
@@ -29,11 +30,24 @@
         mCommandStat = commandStat
         mIdAgent = agent
     End Sub
+    Sub New(id As Integer, idate As Date, productList As Product, client As String, adressDeLivraison As String, netToPay As Integer, commandStat As String, agent As Integer)
+        mId = id
+        mDate = idate
+        mProductList = productList
+        mClientName = client
+        mAdresseDeLivraison = adressDeLivraison
+        mNetToPay = netToPay
+        mCommandStat = commandStat
+        mIdAgent = agent
+    End Sub
 #End Region
 
 #Region "SETTER"
     Private Sub setId(id As Integer)
         mId = id
+    End Sub
+    Public Sub setDate(idate As Date)
+        mDate = idate
     End Sub
     Public Sub setProduct(productList As Product)
         mProductList = productList
@@ -61,6 +75,9 @@
 #Region "GETTER"
     Public Function getId() As Integer
         Return mId
+    End Function
+    Public Function getDate() As Date
+        Return mDate
     End Function
     Public Function getPoduct() As Product
         Return mProductList

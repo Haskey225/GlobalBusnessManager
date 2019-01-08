@@ -5,6 +5,7 @@
     Public command As BasicCommand
     Private productId As Integer
     Private Sub AddCommandWin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        DATE_COMMANDE.ReadOnly = True
         productManager = New ProductManager(MainController.getMainConnexion)
         product = New Product
         listProduct = New List(Of Product)
@@ -30,7 +31,7 @@
         Me.Close()
     End Sub
     Private Sub SELECT_PRODUCT_NAME_TextChange(sender As Object, e As EventArgs) Handles SELECT_PRODUCT_NAME.TextChanged
-
+        'Me.SELECT_PRODUCT_NAME.Items.Clear()
         listProduct = productManager.rechercheFilter(Me.SELECT_PRODUCT_NAME.Text)
         For Each product As Product In listProduct
             Me.SELECT_PRODUCT_NAME.Items.Add(product.getNom)
@@ -75,7 +76,7 @@
             PRODUCT_PRICE.Text = ""
             PRIX_PRODUIT_HT.Text = "0"
 
-            DATE_COMMANDE.Text = ""
+            DATE_COMMANDE.Text = Date.Now.ToShortDateString
             LIEUR_LIVRAISON.Text = ""
             FRAIR_LIVRAISON.Text = "0"
             PRIX_PRODUIT_TTC.Text = "0"
@@ -84,5 +85,9 @@
     Public Function getCommand() As BasicCommand
         Return command
     End Function
+
+    Private Sub DATE_COMMANDE_TextChanged(sender As Object, e As EventArgs) Handles DATE_COMMANDE.TextChanged
+
+    End Sub
 #End Region
 End Class

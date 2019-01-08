@@ -24,7 +24,7 @@ Public Class ProductManager
             'cmd.Parameters.AddWithValue("@val3", CInt(product.getPrixDeVente))
             cmd.Parameters.AddWithValue("@val4", product.getDescription)
             cmd.Parameters.AddWithValue("@val5", "En Stock")
-            cmd.Parameters.AddWithValue("@val6", "20")
+            cmd.Parameters.AddWithValue("@val6", "0")
 
             cmd.ExecuteNonQuery()
             MsgBox("Le produit de code: " & product.getNom & " a été ajouter !")
@@ -90,6 +90,30 @@ Public Class ProductManager
         End Try
         Return loadProduct
     End Function
+    Public Function getProductByCode(code As String) As Product
+        query = "SELECT * FROM produit WHERE code = @val"
+        produit = New Product
+        Try
+            cmd = New MySqlCommand(query, mConnexion)
+            cmd.Parameters.AddWithValue("@val", code)
+            reader = cmd.ExecuteReader
+            If reader IsNot Nothing Then
+                reader.Read()
+                produit.setId(CInt(reader.GetString("id")))
+                produit.setCode(reader.GetString("code"))
+                produit.setNom(reader.GetString("name"))
+                produit.setPrixAchat(CInt(reader.GetString("price")))
+                produit.setQuantite(CInt(reader.GetString("quantite")))
+                produit.setStatus(reader.GetString("status"))
+            End If
+        Catch ex As Exception
+            MsgBox("Erreur de communication avec la base de donnée: " & ex.ToString)
+        Finally
+            cmd.Dispose()
+            reader.Close()
+        End Try
+        Return produit
+    End Function
     Public Function getProduct(name As String) As Product
         query = "SELECT * FROM produit WHERE name = @val"
         produit = New Product
@@ -97,15 +121,17 @@ Public Class ProductManager
             cmd = New MySqlCommand(query, mConnexion)
             cmd.Parameters.AddWithValue("@val", name)
             reader = cmd.ExecuteReader
-            reader.Read()
-            produit.setId(CInt(reader.GetString("id")))
-            produit.setCode(reader.GetString("code"))
-            produit.setNom(reader.GetString("name"))
-            produit.setPrixAchat(CInt(reader.GetString("price")))
-            produit.setQuantite(CInt(reader.GetString("quantite")))
-            produit.setStatus(reader.GetString("status"))
+            If reader IsNot Nothing Then
+                reader.Read()
+                produit.setId(CInt(reader.GetString("id")))
+                produit.setCode(reader.GetString("code"))
+                produit.setNom(reader.GetString("name"))
+                produit.setPrixAchat(CInt(reader.GetString("price")))
+                produit.setQuantite(CInt(reader.GetString("quantite")))
+                produit.setStatus(reader.GetString("status"))
+            End If
         Catch ex As Exception
-            MsgBox("Erreur de communication avce la bas e donnée: " & ex.ToString)
+            MsgBox("Erreur de communication avec la base de donnée: " & ex.ToString)
         Finally
             cmd.Dispose()
             reader.Close()
@@ -203,6 +229,23 @@ Public Class ProductManager
     End Function
     Public Function rechercheFilter(text As String) As List(Of Product)
         query = "SELECT * FROM produit WHERE quantite > 0 AND name LIKE '" & text & "%'"
+        mListOfProduct = New List(Of Product)
+        Try
+            cmd = New MySqlCommand(query, mConnexion)
+            reader = cmd.ExecuteReader
+            While reader.Read
+                mListOfProduct.Add(New Product(reader.GetString("code"), reader.GetString("name"), reader.GetString("price"), reader.GetString("description")))
+            End While
+        Catch ex As Exception
+            MsgBox("Erreur de command. Source: " & ex.ToString)
+        Finally
+            cmd.Dispose()
+            reader.Close()
+        End Try
+        Return mListOfProduct
+    End Function
+    Public Function rechercheFilterParCode(text As String) As List(Of Product)
+        query = "SELECT * FROM produit WHERE quantite > 0 AND code LIKE '" & text & "%'"
         mListOfProduct = New List(Of Product)
         Try
             cmd = New MySqlCommand(query, mConnexion)

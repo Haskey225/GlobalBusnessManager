@@ -1,5 +1,6 @@
 ﻿
 Public Class MainController
+#Region "section variable"
     Dim connexion As Connexion
     Dim product As Product
     Dim productManager As ProductManager
@@ -12,6 +13,7 @@ Public Class MainController
     Dim dastBoad As DastBoad
     Dim host As String
     Dim stockManager As StockManager
+#End Region
     Private Sub MainController_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         activatButton(False)
         Me.PRODUCT_DATA_GRID.Visible = False
@@ -88,6 +90,9 @@ Public Class MainController
         End If
         productManager.deletteProduct(productManager.getRowSelectedIdValue())
     End Sub
+    Private Sub BT_STOCK_MANAGER_Click(sender As Object, e As EventArgs) Handles BT_STOCK_MANAGER.Click
+        WIN_STOCK_MANAGER.Show()
+    End Sub
 #End Region
 #Region "Command manager"
     Private Sub BT_ADD_COMMAND_Click(sender As Object, e As EventArgs) Handles BT_ADD_COMMAND.Click
@@ -147,6 +152,10 @@ Public Class MainController
             activatButton(False)
             dataGridManager.deconnexionView()
             connexion.closeConnexion()
+        Else
+            'basicCommandeManager.updateCommandDataGrid()
+            'productManager.updateProductDataGrid()
+            'stockManager.updateStockListe()
         End If
     End Sub
     Private Sub BT_VUE_COM_Click(sender As Object, e As EventArgs) Handles BT_VUE_COM.Click

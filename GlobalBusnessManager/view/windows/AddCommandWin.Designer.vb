@@ -41,6 +41,7 @@ Partial Class AddCommandWin
         Me.SELECT_PRODUCT_NAME = New System.Windows.Forms.ComboBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.Label16 = New System.Windows.Forms.Label()
         Me.PRIX_PRODUIT_TTC = New System.Windows.Forms.TextBox()
         Me.FRAIR_LIVRAISON = New System.Windows.Forms.TextBox()
         Me.LIEUR_LIVRAISON = New System.Windows.Forms.TextBox()
@@ -51,6 +52,7 @@ Partial Class AddCommandWin
         Me.Label12 = New System.Windows.Forms.Label()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.PRIX_PRODUIT_HT = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.PRIX_UNITAIRE_PRODUIT = New System.Windows.Forms.TextBox()
         Me.QUANTITE_PRODUIT = New System.Windows.Forms.TextBox()
@@ -59,18 +61,16 @@ Partial Class AddCommandWin
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.Label17 = New System.Windows.Forms.Label()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.Label21 = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -106,6 +106,7 @@ Partial Class AddCommandWin
         'CONTACT
         '
         Me.CONTACT.Location = New System.Drawing.Point(6, 80)
+        Me.CONTACT.MaxLength = 8
         Me.CONTACT.Name = "CONTACT"
         Me.CONTACT.Size = New System.Drawing.Size(117, 20)
         Me.CONTACT.TabIndex = 3
@@ -113,6 +114,7 @@ Partial Class AddCommandWin
         'COMMUNE_NAME
         '
         Me.COMMUNE_NAME.Location = New System.Drawing.Point(6, 48)
+        Me.COMMUNE_NAME.MaxLength = 20
         Me.COMMUNE_NAME.Name = "COMMUNE_NAME"
         Me.COMMUNE_NAME.Size = New System.Drawing.Size(117, 20)
         Me.COMMUNE_NAME.TabIndex = 2
@@ -120,6 +122,7 @@ Partial Class AddCommandWin
         'CLIENT_NAME
         '
         Me.CLIENT_NAME.Location = New System.Drawing.Point(6, 10)
+        Me.CLIENT_NAME.MaxLength = 20
         Me.CLIENT_NAME.Name = "CLIENT_NAME"
         Me.CLIENT_NAME.Size = New System.Drawing.Size(117, 20)
         Me.CLIENT_NAME.TabIndex = 1
@@ -266,6 +269,15 @@ Partial Class AddCommandWin
         Me.GroupBox7.TabIndex = 1133
         Me.GroupBox7.TabStop = False
         '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(248, 87)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(36, 13)
+        Me.Label16.TabIndex = 1015
+        Me.Label16.Text = "F CFA"
+        '
         'PRIX_PRODUIT_TTC
         '
         Me.PRIX_PRODUIT_TTC.Location = New System.Drawing.Point(132, 84)
@@ -292,7 +304,7 @@ Partial Class AddCommandWin
         '
         Me.DATE_COMMANDE.Location = New System.Drawing.Point(132, 12)
         Me.DATE_COMMANDE.Name = "DATE_COMMANDE"
-        Me.DATE_COMMANDE.Size = New System.Drawing.Size(156, 20)
+        Me.DATE_COMMANDE.Size = New System.Drawing.Size(110, 20)
         Me.DATE_COMMANDE.TabIndex = 9
         '
         'Label15
@@ -355,6 +367,15 @@ Partial Class AddCommandWin
         Me.PRIX_PRODUIT_HT.Size = New System.Drawing.Size(100, 20)
         Me.PRIX_PRODUIT_HT.TabIndex = 8
         '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(228, 84)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(36, 13)
+        Me.Label17.TabIndex = 1016
+        Me.Label17.Text = "F CFA"
+        '
         'Label11
         '
         Me.Label11.AutoSize = True
@@ -375,6 +396,7 @@ Partial Class AddCommandWin
         'QUANTITE_PRODUIT
         '
         Me.QUANTITE_PRODUIT.Location = New System.Drawing.Point(111, 9)
+        Me.QUANTITE_PRODUIT.MaxLength = 2
         Me.QUANTITE_PRODUIT.Name = "QUANTITE_PRODUIT"
         Me.QUANTITE_PRODUIT.Size = New System.Drawing.Size(40, 20)
         Me.QUANTITE_PRODUIT.TabIndex = 6
@@ -426,24 +448,6 @@ Partial Class AddCommandWin
         Me.Button2.Text = "Annuler"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(248, 87)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(36, 13)
-        Me.Label16.TabIndex = 1015
-        Me.Label16.Text = "F CFA"
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(228, 84)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(36, 13)
-        Me.Label17.TabIndex = 1016
-        Me.Label17.Text = "F CFA"
-        '
         'GroupBox8
         '
         Me.GroupBox8.Controls.Add(Me.Label22)
@@ -462,64 +466,14 @@ Partial Class AddCommandWin
         Me.GroupBox8.TabStop = False
         Me.GroupBox8.Text = "Agent et date"
         '
-        'ComboBox1
+        'Label22
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(43, 23)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(85, 21)
-        Me.ComboBox1.TabIndex = 0
-        '
-        'Label18
-        '
-        Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(1, 27)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(41, 13)
-        Me.Label18.TabIndex = 1
-        Me.Label18.Text = "Agent: "
-        '
-        'Label19
-        '
-        Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(1, 85)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(36, 13)
-        Me.Label19.TabIndex = 2
-        Me.Label19.Text = "Date: "
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(43, 81)
-        Me.TextBox1.MaxLength = 2
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(21, 20)
-        Me.TextBox1.TabIndex = 3
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(68, 81)
-        Me.TextBox2.MaxLength = 2
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(21, 20)
-        Me.TextBox2.TabIndex = 3
-        '
-        'TextBox3
-        '
-        Me.TextBox3.Location = New System.Drawing.Point(93, 81)
-        Me.TextBox3.MaxLength = 4
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(55, 20)
-        Me.TextBox3.TabIndex = 4
-        '
-        'Label20
-        '
-        Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(51, 63)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(9, 13)
-        Me.Label20.TabIndex = 5
-        Me.Label20.Text = "j"
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(103, 63)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(37, 13)
+        Me.Label22.TabIndex = 5
+        Me.Label22.Text = "année"
         '
         'Label21
         '
@@ -530,14 +484,65 @@ Partial Class AddCommandWin
         Me.Label21.TabIndex = 5
         Me.Label21.Text = "m"
         '
-        'Label22
+        'Label20
         '
-        Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(103, 63)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(37, 13)
-        Me.Label22.TabIndex = 5
-        Me.Label22.Text = "année"
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(51, 63)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(9, 13)
+        Me.Label20.TabIndex = 5
+        Me.Label20.Text = "j"
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Location = New System.Drawing.Point(93, 81)
+        Me.TextBox3.MaxLength = 4
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(55, 20)
+        Me.TextBox3.TabIndex = 4
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(68, 81)
+        Me.TextBox2.MaxLength = 2
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(21, 20)
+        Me.TextBox2.TabIndex = 3
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(43, 81)
+        Me.TextBox1.MaxLength = 2
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(21, 20)
+        Me.TextBox1.TabIndex = 3
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(1, 85)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(36, 13)
+        Me.Label19.TabIndex = 2
+        Me.Label19.Text = "Date: "
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(1, 27)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(41, 13)
+        Me.Label18.TabIndex = 1
+        Me.Label18.Text = "Agent: "
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(43, 23)
+        Me.ComboBox1.MaxLength = 10
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(85, 21)
+        Me.ComboBox1.TabIndex = 0
         '
         'AddCommandWin
         '

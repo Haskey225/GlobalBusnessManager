@@ -29,7 +29,7 @@ Public Class StockManager
             End If
         Catch ex As Exception
             mExecuteError = True
-            MsgBox("La connexion au serveur semble être perdue.")
+            MsgBox("La connexion au serveur semble être perdue." & Chr(13) & "Veuillez vous reconnecter s'il vous plaît")
         Finally
             If mCmd IsNot Nothing Then
                 mCmd.Dispose()
@@ -57,7 +57,7 @@ Public Class StockManager
             End If
         Catch ex As Exception
             mExecuteError = True
-            MsgBox("Erreur d'execution. Source de l'erreur: " & ex.ToString)
+            MsgBox("La connexion au serveur semble être perdue." & Chr(13) & "Veuillez vous reconnecter s'il vous plaît")
         Finally
             If mCmd IsNot Nothing Then
                 mCmd.Dispose()
@@ -85,7 +85,7 @@ Public Class StockManager
             End If
         Catch ex As Exception
             mExecuteError = True
-            MsgBox("Erreur d'execution. Source de l'erreur: " & ex.ToString)
+            MsgBox("La connexion au serveur semble être perdue." & Chr(13) & "Veuillez vous reconnecter s'il vous plaît")
         Finally
             If mCmd IsNot Nothing Then
                 mCmd.Dispose()
@@ -113,7 +113,7 @@ Public Class StockManager
             End If
         Catch ex As Exception
             mExecuteError = True
-            MsgBox("Erreur d'execution. Source de l'erreur: " & ex.ToString)
+            MsgBox("La connexion au serveur semble être perdue." & Chr(13) & "Veuillez vous reconnecter s'il vous plaît")
         Finally
             If mCmd IsNot Nothing Then
                 mCmd.Dispose()
@@ -185,6 +185,85 @@ Public Class StockManager
             If mReader IsNot Nothing Then
                 mReader.Close()
             End If
+        End Try
+    End Sub
+    Public Sub updateProductQuantityByCodem(code As String, aretirer As Integer)
+        Me.uppdateProductStat()
+        Dim quantite As Integer
+        mQuery = "SELECT quantite FROM produit WHERE code = @val"
+        Try
+            mCmd = New MySqlCommand(mQuery, mConnexion)
+            mCmd.Parameters.AddWithValue("@val", code)
+            mReader = mCmd.ExecuteReader
+            If mReader IsNot Nothing Then
+                mReader.Read()
+                quantite = CInt(mReader.GetString("quantite"))
+            End If
+        Catch ex As Exception
+            MsgBox("Erreur d'execution. Source de l'erreur: " & ex.ToString)
+        Finally
+            mCmd.Dispose()
+            mReader.Close()
+        End Try
+        quantite = quantite - aretirer
+        mQuery = "UPDATE produit SET quantite = @val1 WHERE code = @val2"
+        Try
+            mCmd = New MySqlCommand(mQuery, mConnexion)
+            mCmd.Parameters.AddWithValue("@val1", quantite)
+            mCmd.Parameters.AddWithValue("@val2", code)
+
+            mCmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MsgBox("Erreur d'execution. Source de l'erreur: " & ex.ToString)
+        Finally
+            Me.uppdateProductStat()
+
+            If mCmd IsNot Nothing Then
+                mCmd.Dispose()
+            End If
+            If mReader IsNot Nothing Then
+                mReader.Close()
+            End If
+        End Try
+    End Sub
+    Public Sub updateProductQuantityByCodep(code As String, aRetirer As Integer)
+        Me.uppdateProductStat()
+        Dim quantite As Integer
+        mQuery = "SELECT quantite FROM produit WHERE code = @val"
+        Try
+            mCmd = New MySqlCommand(mQuery, mConnexion)
+            mCmd.Parameters.AddWithValue("@val", code)
+            mReader = mCmd.ExecuteReader
+            If mReader IsNot Nothing Then
+                mReader.Read()
+                quantite = CInt(mReader.GetString("quantite"))
+            End If
+        Catch ex As Exception
+            MsgBox("Erreur d'execution. Source de l'erreur: " & ex.ToString)
+        Finally
+            mCmd.Dispose()
+            mReader.Close()
+        End Try
+        quantite = quantite + aRetirer
+        mQuery = "UPDATE produit SET quantite = @val1 WHERE code = @val2"
+        Try
+            mCmd = New MySqlCommand(mQuery, mConnexion)
+            mCmd.Parameters.AddWithValue("@val1", quantite)
+            mCmd.Parameters.AddWithValue("@val2", code)
+
+            mCmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MsgBox("Erreur d'execution. Source de l'erreur: " & ex.ToString)
+        Finally
+
+
+            If mCmd IsNot Nothing Then
+                mCmd.Dispose()
+            End If
+            If mReader IsNot Nothing Then
+                mReader.Close()
+            End If
+            Me.uppdateProductStat()
         End Try
     End Sub
     Public Sub uppdateProductStat()
@@ -269,4 +348,92 @@ Public Class StockManager
     Public Function getExecuteError() As Boolean
         Return mExecuteError
     End Function
+    'Entrer Sortie function
+#Region "Section entrer sortir"
+    Public Sub addInObject(inObject As InObject)
+        mQuery = "INSERT INTO entree(date_e, produit_id, stock_init, quantite, stock_final) VALUE(@val1, @val2, @val3, @val4, @val5)"
+        Try
+            mCmd = New MySqlCommand(mQuery, mConnexion)
+            With mCmd.Parameters
+                .AddWithValue("@val1", inObject.getDate.ToShortDateString)
+                .AddWithValue("@val2", inObject.getProductId)
+                .AddWithValue("@val3", inObject.getStockIni)
+                .AddWithValue("@val4", inObject.getQuantite)
+                .AddWithValue("@val5", inObject.getStockFinal)
+            End With
+            mCmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MsgBox("Erreur d'execution du programme. Source de l'erreur: " & ex.ToString)
+        Finally
+            eraseMemory()
+            updateProductQuantityByCodep(inObject.getProductId, inObject.getQuantite)
+        End Try
+    End Sub
+    Public Sub addOutObject(outObject As OutObject)
+        mQuery = "INSERT INTO sortie (date_s, produit_id, cause, destination, quantite) VALUE(@val1, @val2, @val3, @val4, @val5)"
+        Try
+            mCmd = New MySqlCommand(mQuery, mConnexion)
+            With mCmd.Parameters
+                .AddWithValue("@val1", outObject.getDate.ToShortDateString)
+                .AddWithValue("@val2", outObject.getProductId)
+                .AddWithValue("@val3", outObject.getCause)
+                .AddWithValue("@val4", outObject.getDestination)
+                .AddWithValue("@val5", outObject.getQuantite)
+            End With
+            mCmd.ExecuteNonQuery()
+
+        Catch ex As Exception
+            MsgBox("Erreur d'execution du programme. Source de l'erreur: " & ex.ToString)
+        Finally
+            eraseMemory()
+            updateProductQuantityByCodem(outObject.getProductId, outObject.getQuantite)
+        End Try
+    End Sub
+    Public Function getInObject() As List(Of InObject)
+        Dim inObjectList As New List(Of InObject)
+        mQuery = "SELECT * FROM entree"
+        Try
+            mCmd = New MySqlCommand(mQuery, mConnexion)
+            mReader = mCmd.ExecuteReader
+            While mReader.Read
+                inObjectList.Add(New InObject(mReader.GetString("id"), CDate(mReader.GetString("date_e")).ToShortDateString, mReader.GetString("produit_id"),
+                                              CInt(mReader.GetString("stock_init")), CInt(mReader.GetString("quantite")),
+                                              CInt(mReader.GetString("stock_final"))))
+            End While
+        Catch ex As Exception
+            MsgBox("Erreur d'execution du programme. Source: " & ex.ToString)
+        Finally
+            eraseMemory()
+        End Try
+        Return inObjectList
+    End Function
+    Public Function getOutObject() As List(Of OutObject)
+        Dim outObjectList As New List(Of OutObject)
+        mQuery = "SELECT * FROM sortie"
+        Try
+            mCmd = New MySqlCommand(mQuery, mConnexion)
+            mReader = mCmd.ExecuteReader
+
+            While mReader.Read
+                outObjectList.Add(New OutObject(mReader.GetString("id"), CDate(mReader.GetString("date_s")).ToShortDateString, mReader.GetString("produit_id"),
+                                              mReader.GetString("cause"), mReader.GetString("destination"),
+                                              mReader.GetString("quantite")))
+            End While
+        Catch ex As Exception
+            MsgBox("Erreur d'execution du programe. Source: " & ex.ToString)
+        Finally
+            eraseMemory()
+        End Try
+        Return outObjectList
+    End Function
+#End Region
+
+    Public Sub eraseMemory()
+        If mCmd IsNot Nothing Then
+            mCmd.Dispose()
+        End If
+        If mReader IsNot Nothing Then
+            mReader.Close()
+        End If
+    End Sub
 End Class
