@@ -32,6 +32,7 @@ Partial Class AddCommandWin
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.SEARCH_TEXT = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.PRODUCT_PRICE = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -105,6 +106,7 @@ Partial Class AddCommandWin
         '
         'CONTACT
         '
+        Me.CONTACT.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.CONTACT.Location = New System.Drawing.Point(6, 80)
         Me.CONTACT.MaxLength = 8
         Me.CONTACT.Name = "CONTACT"
@@ -113,6 +115,7 @@ Partial Class AddCommandWin
         '
         'COMMUNE_NAME
         '
+        Me.COMMUNE_NAME.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.COMMUNE_NAME.Location = New System.Drawing.Point(6, 48)
         Me.COMMUNE_NAME.MaxLength = 20
         Me.COMMUNE_NAME.Name = "COMMUNE_NAME"
@@ -121,6 +124,7 @@ Partial Class AddCommandWin
         '
         'CLIENT_NAME
         '
+        Me.CLIENT_NAME.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.CLIENT_NAME.Location = New System.Drawing.Point(6, 10)
         Me.CLIENT_NAME.MaxLength = 20
         Me.CLIENT_NAME.Name = "CLIENT_NAME"
@@ -167,6 +171,7 @@ Partial Class AddCommandWin
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.SEARCH_TEXT)
         Me.GroupBox2.Controls.Add(Me.Label7)
         Me.GroupBox2.Controls.Add(Me.PRODUCT_PRICE)
         Me.GroupBox2.Controls.Add(Me.Label6)
@@ -176,10 +181,18 @@ Partial Class AddCommandWin
         Me.GroupBox2.Controls.Add(Me.SELECT_PRODUCT_NAME)
         Me.GroupBox2.Location = New System.Drawing.Point(360, 6)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(234, 134)
+        Me.GroupBox2.Size = New System.Drawing.Size(334, 134)
         Me.GroupBox2.TabIndex = 112
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Information sur le produit"
+        '
+        'SEARCH_TEXT
+        '
+        Me.SEARCH_TEXT.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.SEARCH_TEXT.Location = New System.Drawing.Point(94, 19)
+        Me.SEARCH_TEXT.Name = "SEARCH_TEXT"
+        Me.SEARCH_TEXT.Size = New System.Drawing.Size(208, 20)
+        Me.SEARCH_TEXT.TabIndex = 1016
         '
         'Label7
         '
@@ -192,10 +205,10 @@ Partial Class AddCommandWin
         '
         'PRODUCT_PRICE
         '
-        Me.PRODUCT_PRICE.Location = New System.Drawing.Point(94, 93)
+        Me.PRODUCT_PRICE.Location = New System.Drawing.Point(96, 93)
         Me.PRODUCT_PRICE.Name = "PRODUCT_PRICE"
         Me.PRODUCT_PRICE.ReadOnly = True
-        Me.PRODUCT_PRICE.Size = New System.Drawing.Size(80, 20)
+        Me.PRODUCT_PRICE.Size = New System.Drawing.Size(78, 20)
         Me.PRODUCT_PRICE.TabIndex = 1014
         '
         'Label6
@@ -210,7 +223,7 @@ Partial Class AddCommandWin
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(5, 56)
+        Me.Label5.Location = New System.Drawing.Point(5, 23)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(85, 13)
         Me.Label5.TabIndex = 113
@@ -218,16 +231,16 @@ Partial Class AddCommandWin
         '
         'CODE_PRODUIT
         '
-        Me.CODE_PRODUIT.Location = New System.Drawing.Point(94, 53)
+        Me.CODE_PRODUIT.Location = New System.Drawing.Point(96, 53)
         Me.CODE_PRODUIT.Name = "CODE_PRODUIT"
         Me.CODE_PRODUIT.ReadOnly = True
-        Me.CODE_PRODUIT.Size = New System.Drawing.Size(133, 20)
+        Me.CODE_PRODUIT.Size = New System.Drawing.Size(150, 20)
         Me.CODE_PRODUIT.TabIndex = 1011
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(5, 22)
+        Me.Label4.Location = New System.Drawing.Point(5, 60)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(85, 13)
         Me.Label4.TabIndex = 1010
@@ -236,9 +249,10 @@ Partial Class AddCommandWin
         'SELECT_PRODUCT_NAME
         '
         Me.SELECT_PRODUCT_NAME.FormattingEnabled = True
-        Me.SELECT_PRODUCT_NAME.Location = New System.Drawing.Point(94, 19)
+        Me.SELECT_PRODUCT_NAME.Location = New System.Drawing.Point(96, 19)
+        Me.SELECT_PRODUCT_NAME.MaxDropDownItems = 20
         Me.SELECT_PRODUCT_NAME.Name = "SELECT_PRODUCT_NAME"
-        Me.SELECT_PRODUCT_NAME.Size = New System.Drawing.Size(133, 21)
+        Me.SELECT_PRODUCT_NAME.Size = New System.Drawing.Size(221, 21)
         Me.SELECT_PRODUCT_NAME.TabIndex = 5
         '
         'GroupBox3
@@ -247,7 +261,7 @@ Partial Class AddCommandWin
         Me.GroupBox3.Controls.Add(Me.GroupBox6)
         Me.GroupBox3.Location = New System.Drawing.Point(7, 152)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(588, 156)
+        Me.GroupBox3.Size = New System.Drawing.Size(687, 156)
         Me.GroupBox3.TabIndex = 2
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Commande et livraison"
@@ -265,7 +279,7 @@ Partial Class AddCommandWin
         Me.GroupBox7.Controls.Add(Me.Label12)
         Me.GroupBox7.Location = New System.Drawing.Point(284, 18)
         Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(294, 125)
+        Me.GroupBox7.Size = New System.Drawing.Size(359, 125)
         Me.GroupBox7.TabIndex = 1133
         Me.GroupBox7.TabStop = False
         '
@@ -288,23 +302,26 @@ Partial Class AddCommandWin
         '
         'FRAIR_LIVRAISON
         '
+        Me.FRAIR_LIVRAISON.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.FRAIR_LIVRAISON.Location = New System.Drawing.Point(132, 58)
         Me.FRAIR_LIVRAISON.Name = "FRAIR_LIVRAISON"
-        Me.FRAIR_LIVRAISON.Size = New System.Drawing.Size(156, 20)
+        Me.FRAIR_LIVRAISON.Size = New System.Drawing.Size(203, 20)
         Me.FRAIR_LIVRAISON.TabIndex = 11
         '
         'LIEUR_LIVRAISON
         '
+        Me.LIEUR_LIVRAISON.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.LIEUR_LIVRAISON.Location = New System.Drawing.Point(132, 35)
         Me.LIEUR_LIVRAISON.Name = "LIEUR_LIVRAISON"
-        Me.LIEUR_LIVRAISON.Size = New System.Drawing.Size(156, 20)
+        Me.LIEUR_LIVRAISON.Size = New System.Drawing.Size(203, 20)
         Me.LIEUR_LIVRAISON.TabIndex = 10
         '
         'DATE_COMMANDE
         '
+        Me.DATE_COMMANDE.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.DATE_COMMANDE.Location = New System.Drawing.Point(132, 12)
         Me.DATE_COMMANDE.Name = "DATE_COMMANDE"
-        Me.DATE_COMMANDE.Size = New System.Drawing.Size(110, 20)
+        Me.DATE_COMMANDE.Size = New System.Drawing.Size(151, 20)
         Me.DATE_COMMANDE.TabIndex = 9
         '
         'Label15
@@ -548,7 +565,7 @@ Partial Class AddCommandWin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(598, 345)
+        Me.ClientSize = New System.Drawing.Size(706, 345)
         Me.ControlBox = False
         Me.Controls.Add(Me.GroupBox8)
         Me.Controls.Add(Me.Button2)
@@ -629,4 +646,5 @@ Partial Class AddCommandWin
     Friend WithEvents Label19 As Label
     Friend WithEvents Label18 As Label
     Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents SEARCH_TEXT As TextBox
 End Class

@@ -5,6 +5,8 @@
     Private mClientName As String
     Private mClientContact As String
     Private mAdresseDeLivraison As String
+    Private mPrixAchat As Integer
+    Private mPrixVent As Integer
     Private mNetToPay As Integer
     Private mCommandStat As String
     Private mIdAgent As Integer

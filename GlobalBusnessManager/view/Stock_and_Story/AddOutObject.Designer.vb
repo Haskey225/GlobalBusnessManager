@@ -39,12 +39,15 @@ Partial Class AddOutObject
         Me.O_QUANTITE = New System.Windows.Forms.TextBox()
         Me.BT_O_APLY = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Error_Message = New System.Windows.Forms.Label()
+        Me.SEARCH_TEXT = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'O_DAY
         '
         Me.O_DAY.Location = New System.Drawing.Point(134, 22)
         Me.O_DAY.Name = "O_DAY"
+        Me.O_DAY.ReadOnly = True
         Me.O_DAY.Size = New System.Drawing.Size(25, 20)
         Me.O_DAY.TabIndex = 0
         '
@@ -69,7 +72,8 @@ Partial Class AddOutObject
         'PRODUCT_ID
         '
         Me.PRODUCT_ID.FormattingEnabled = True
-        Me.PRODUCT_ID.Location = New System.Drawing.Point(134, 50)
+        Me.PRODUCT_ID.Location = New System.Drawing.Point(134, 48)
+        Me.PRODUCT_ID.MaxDropDownItems = 20
         Me.PRODUCT_ID.Name = "PRODUCT_ID"
         Me.PRODUCT_ID.Size = New System.Drawing.Size(149, 21)
         Me.PRODUCT_ID.TabIndex = 3
@@ -105,6 +109,7 @@ Partial Class AddOutObject
         '
         Me.O_MONTH.Location = New System.Drawing.Point(165, 22)
         Me.O_MONTH.Name = "O_MONTH"
+        Me.O_MONTH.ReadOnly = True
         Me.O_MONTH.Size = New System.Drawing.Size(25, 20)
         Me.O_MONTH.TabIndex = 0
         '
@@ -112,6 +117,7 @@ Partial Class AddOutObject
         '
         Me.O_YEAR.Location = New System.Drawing.Point(196, 22)
         Me.O_YEAR.Name = "O_YEAR"
+        Me.O_YEAR.ReadOnly = True
         Me.O_YEAR.Size = New System.Drawing.Size(49, 20)
         Me.O_YEAR.TabIndex = 0
         '
@@ -144,6 +150,7 @@ Partial Class AddOutObject
         '
         'O_CAUSE
         '
+        Me.O_CAUSE.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.O_CAUSE.Location = New System.Drawing.Point(134, 80)
         Me.O_CAUSE.Name = "O_CAUSE"
         Me.O_CAUSE.Size = New System.Drawing.Size(149, 20)
@@ -151,6 +158,7 @@ Partial Class AddOutObject
         '
         'O_DESTINATION
         '
+        Me.O_DESTINATION.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.O_DESTINATION.Location = New System.Drawing.Point(134, 107)
         Me.O_DESTINATION.Name = "O_DESTINATION"
         Me.O_DESTINATION.Size = New System.Drawing.Size(149, 20)
@@ -158,6 +166,7 @@ Partial Class AddOutObject
         '
         'O_QUANTITE
         '
+        Me.O_QUANTITE.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.O_QUANTITE.Location = New System.Drawing.Point(134, 135)
         Me.O_QUANTITE.Name = "O_QUANTITE"
         Me.O_QUANTITE.Size = New System.Drawing.Size(100, 20)
@@ -183,12 +192,33 @@ Partial Class AddOutObject
         Me.Button1.Text = "Annuler"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'Error_Message
+        '
+        Me.Error_Message.AutoSize = True
+        Me.Error_Message.ForeColor = System.Drawing.Color.Red
+        Me.Error_Message.Location = New System.Drawing.Point(122, 163)
+        Me.Error_Message.Name = "Error_Message"
+        Me.Error_Message.Size = New System.Drawing.Size(158, 13)
+        Me.Error_Message.TabIndex = 31
+        Me.Error_Message.Text = "Entrez des informations valides !"
+        Me.Error_Message.Visible = False
+        '
+        'SEARCH_TEXT
+        '
+        Me.SEARCH_TEXT.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.SEARCH_TEXT.Location = New System.Drawing.Point(134, 48)
+        Me.SEARCH_TEXT.Name = "SEARCH_TEXT"
+        Me.SEARCH_TEXT.Size = New System.Drawing.Size(134, 20)
+        Me.SEARCH_TEXT.TabIndex = 32
+        '
         'AddOutObject
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(346, 218)
         Me.ControlBox = False
+        Me.Controls.Add(Me.SEARCH_TEXT)
+        Me.Controls.Add(Me.Error_Message)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.BT_O_APLY)
         Me.Controls.Add(Me.O_QUANTITE)
@@ -235,4 +265,6 @@ Partial Class AddOutObject
     Friend WithEvents O_QUANTITE As TextBox
     Friend WithEvents BT_O_APLY As Button
     Friend WithEvents Button1 As Button
+    Friend WithEvents Error_Message As Label
+    Friend WithEvents SEARCH_TEXT As TextBox
 End Class

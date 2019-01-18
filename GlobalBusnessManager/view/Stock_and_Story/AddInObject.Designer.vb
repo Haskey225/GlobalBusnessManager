@@ -39,6 +39,8 @@ Partial Class AddInObject
         Me.I_YEAR = New System.Windows.Forms.TextBox()
         Me.I_MONTH = New System.Windows.Forms.TextBox()
         Me.I_DAY = New System.Windows.Forms.TextBox()
+        Me.Error_Message = New System.Windows.Forms.Label()
+        Me.SEARTCH_TEXT = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'Button1
@@ -63,6 +65,7 @@ Partial Class AddInObject
         '
         'I_STCK_FINAL
         '
+        Me.I_STCK_FINAL.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.I_STCK_FINAL.Location = New System.Drawing.Point(122, 134)
         Me.I_STCK_FINAL.Name = "I_STCK_FINAL"
         Me.I_STCK_FINAL.ReadOnly = True
@@ -72,6 +75,7 @@ Partial Class AddInObject
         '
         'I_QUANTITE
         '
+        Me.I_QUANTITE.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.I_QUANTITE.Location = New System.Drawing.Point(122, 106)
         Me.I_QUANTITE.MaxLength = 5
         Me.I_QUANTITE.Name = "I_QUANTITE"
@@ -81,6 +85,7 @@ Partial Class AddInObject
         '
         'I_STCK_INIT
         '
+        Me.I_STCK_INIT.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.I_STCK_INIT.Location = New System.Drawing.Point(122, 79)
         Me.I_STCK_INIT.Name = "I_STCK_INIT"
         Me.I_STCK_INIT.ReadOnly = True
@@ -172,6 +177,7 @@ Partial Class AddInObject
         '
         Me.I_YEAR.Location = New System.Drawing.Point(184, 21)
         Me.I_YEAR.Name = "I_YEAR"
+        Me.I_YEAR.ReadOnly = True
         Me.I_YEAR.Size = New System.Drawing.Size(49, 20)
         Me.I_YEAR.TabIndex = 14
         '
@@ -179,6 +185,7 @@ Partial Class AddInObject
         '
         Me.I_MONTH.Location = New System.Drawing.Point(153, 21)
         Me.I_MONTH.Name = "I_MONTH"
+        Me.I_MONTH.ReadOnly = True
         Me.I_MONTH.Size = New System.Drawing.Size(25, 20)
         Me.I_MONTH.TabIndex = 15
         '
@@ -186,8 +193,28 @@ Partial Class AddInObject
         '
         Me.I_DAY.Location = New System.Drawing.Point(122, 21)
         Me.I_DAY.Name = "I_DAY"
+        Me.I_DAY.ReadOnly = True
         Me.I_DAY.Size = New System.Drawing.Size(25, 20)
         Me.I_DAY.TabIndex = 13
+        '
+        'Error_Message
+        '
+        Me.Error_Message.AutoSize = True
+        Me.Error_Message.ForeColor = System.Drawing.Color.Red
+        Me.Error_Message.Location = New System.Drawing.Point(112, 161)
+        Me.Error_Message.Name = "Error_Message"
+        Me.Error_Message.Size = New System.Drawing.Size(158, 13)
+        Me.Error_Message.TabIndex = 30
+        Me.Error_Message.Text = "Entrez des informations valides !"
+        Me.Error_Message.Visible = False
+        '
+        'SEARTCH_TEXT
+        '
+        Me.SEARTCH_TEXT.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.SEARTCH_TEXT.Location = New System.Drawing.Point(122, 49)
+        Me.SEARTCH_TEXT.Name = "SEARTCH_TEXT"
+        Me.SEARTCH_TEXT.Size = New System.Drawing.Size(134, 20)
+        Me.SEARTCH_TEXT.TabIndex = 33
         '
         'AddInObject
         '
@@ -195,6 +222,8 @@ Partial Class AddInObject
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(346, 218)
         Me.ControlBox = False
+        Me.Controls.Add(Me.SEARTCH_TEXT)
+        Me.Controls.Add(Me.Error_Message)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.BT_I_APLY)
         Me.Controls.Add(Me.I_STCK_FINAL)
@@ -240,4 +269,6 @@ Partial Class AddInObject
     Friend WithEvents I_YEAR As TextBox
     Friend WithEvents I_MONTH As TextBox
     Friend WithEvents I_DAY As TextBox
+    Friend WithEvents Error_Message As Label
+    Friend WithEvents SEARTCH_TEXT As TextBox
 End Class

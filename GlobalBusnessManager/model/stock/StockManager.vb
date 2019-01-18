@@ -11,7 +11,7 @@ Public Class StockManager
         mExecuteError = False
     End Sub
 
-    'Recuperation de tou les produit et retour a la DATA GRID cette fonction est a appeler frequemment: Chaque 30 seconde
+    'Recuperation de tout les produits et retour a la DATA GRID cette fonction est a appeler frequemment: Chaque 30 seconde
     Public Function getUnstockedProducts() As List(Of Product)
         If mExecuteError Then
             Return New List(Of Product)
@@ -161,7 +161,7 @@ Public Class StockManager
                 quantite = CInt(mReader.GetString("quantite"))
             End If
         Catch ex As Exception
-            MsgBox("Erreur d'execution. Source de l'erreur: " & ex.ToString)
+            MsgBox("Erreur de lecture. Source de l'erreur: " & ex.ToString)
         Finally
             mCmd.Dispose()
             mReader.Close()
@@ -174,8 +174,9 @@ Public Class StockManager
             mCmd.Parameters.AddWithValue("@val2", name)
 
             mCmd.ExecuteNonQuery()
+            'Commande as commande de tris
         Catch ex As Exception
-            MsgBox("Erreur d'execution. Source de l'erreur: " & ex.ToString)
+            MsgBox("Erreur de mise a jour. Source de l'erreur: " & ex.ToString)
         Finally
             Me.uppdateProductStat()
 
@@ -302,7 +303,7 @@ Public Class StockManager
         Try
             listOfProduct = Me.getAllProducts
             For Each product As Product In listOfProduct
-                MainController.STOCK_LIST.Rows.Add(CInt(product.getId), product.getNom, product.getStatus, product.getQuantite)
+                MainController.STOCK_LIST.Rows.Add(CInt(product.getId), product.getCode, product.getNom, product.getStatus, product.getQuantite)
             Next
         Catch ex As Exception
             MsgBox("Erreur d'execution de la commande. Source de l'erreur: " & ex.ToString)
@@ -320,7 +321,7 @@ Public Class StockManager
         Dim quantite As Integer
 
         id = CInt(MainController.STOCK_LIST.CurrentRow.Cells().Item(0).Value)
-        quantite = CInt(MainController.STOCK_LIST.CurrentRow.Cells().Item(3).Value)
+        quantite = CInt(MainController.STOCK_LIST.CurrentRow.Cells().Item(4).Value)
         If quantite < 0 Then
             quantite = 0
         End If

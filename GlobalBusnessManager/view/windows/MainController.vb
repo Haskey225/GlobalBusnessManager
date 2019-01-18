@@ -13,8 +13,10 @@ Public Class MainController
     Dim dastBoad As DastBoad
     Dim host As String
     Dim stockManager As StockManager
+    Dim mOutObject As OutObject
 #End Region
     Private Sub MainController_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.STOCK_MANAGER_VIEW.Visible = False
         activatButton(False)
         Me.PRODUCT_DATA_GRID.Visible = False
         Me.CLIENT_DATA_VIEW.Visible = False
@@ -41,7 +43,9 @@ Public Class MainController
                     UpDateTimer.Enabled = True
                     stockManager = New StockManager(connexion)
                     stockManager.uppdateProductStat()
+                    mOutObject = New OutObject
                     exite = True
+                    'contact je suis tres occuper je ne peut pas venir
                 End If
             Else
                 exite = True
@@ -91,7 +95,27 @@ Public Class MainController
         productManager.deletteProduct(productManager.getRowSelectedIdValue())
     End Sub
     Private Sub BT_STOCK_MANAGER_Click(sender As Object, e As EventArgs) Handles BT_STOCK_MANAGER.Click
-        WIN_STOCK_MANAGER.Show()
+        'WIN_STOCK_MANAGER.Show()
+        Me.STOCK_MANAGER_VIEW.Visible = True
+        displayInObject(stockManager.getInObject)
+        displayOutObject(stockManager.getOutObject)
+    End Sub
+    Private Sub BT_ADD_OUT_OBJECT_Click(sender As Object, e As EventArgs) Handles BT_ADD_OUT_OBJECT.Click
+        AddOutObject.ShowDialog()
+        If AddOutObject.DialogResult = DialogResult.Cancel Then
+            Exit Sub
+        End If
+        stockManager.addOutObject(makeOutObjectByDiarlog)
+        displayOutObject(stockManager.getOutObject)
+    End Sub
+
+    Private Sub BT_ADD_IN_OBJECT_Click(sender As Object, e As EventArgs) Handles BT_ADD_IN_OBJECT.Click
+        AddInObject.ShowDialog()
+        If AddInObject.DialogResult = DialogResult.Cancel Then
+            Exit Sub
+        End If
+        stockManager.addInObject(makeInObjectByDiarlog)
+        displayInObject(stockManager.getInObject)
     End Sub
 #End Region
 #Region "Command manager"
@@ -159,8 +183,12 @@ Public Class MainController
         End If
     End Sub
     Private Sub BT_VUE_COM_Click(sender As Object, e As EventArgs) Handles BT_VUE_COM.Click
-        basicCommandeManager.updateCommandDataGrid()
-        dataGridManager.commandView()
+        Try
+            basicCommandeManager.updateCommandDataGrid()
+            dataGridManager.commandView()
+        Catch ex As Exception
+            MsgBox("Veuillez vous connceter avant d'afficher les commandes")
+        End Try
     End Sub
     Private Sub BT_VUE_PRODUIT_Click(sender As Object, e As EventArgs) Handles BT_VUE_PRODUIT.Click
         productManager.updateProductDataGrid()
@@ -180,9 +208,15 @@ Public Class MainController
         If basicCommandeManager.getSelectedCellContenteValue <> "En Cours" Then
             Exit Sub
         End If
-        'MsgBox(basicCommandeManager.getProductNameFromCounrrantRow)
+        mOutObject.setDate(Date.Now)
+        mOutObject.setCause("Rien")
+        mOutObject.setProductId(basicCommandeManager.getRowSelectedProductCodeValue)
+        mOutObject.setDestination("INCONU")
+        mOutObject.setQuantite(1)
+        stockManager.addOutObject(mOutObject)
         stockManager.updateProductQuantity(basicCommandeManager.getProductNameFromCounrrantRow)
         basicCommandeManager.validateCourrantStat(basicCommandeManager.getRowSelectedIdValue)
+        'stockManager.addOutObject(New OutObject())
         'MsgBox(basicCommandeManager.getRowSelectedIdValue)
     End Sub
 #End Region
@@ -233,5 +267,7 @@ Public Class MainController
 
         End Try
     End Sub
+
+
 End Class
 

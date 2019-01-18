@@ -3,6 +3,7 @@
     Private mCode As String
     Private mNom As String
     Private mPrixAchat As Integer
+    Private mPrixDeVente As Integer
     Private mDescription As String
     Private mStatus As String
     Private mQuantity As Integer
@@ -11,6 +12,7 @@
         mCode = code
         mNom = name
         mPrixAchat = 0
+        mPrixDeVente = 0
         mDescription = "Aucun descriptif"
         mStatus = "Inconus"
         mQuantity = quantite
@@ -19,6 +21,7 @@
         mCode = code
         mNom = nom
         mPrixAchat = prixAchat
+        mPrixDeVente = 0
         mDescription = descriptif
         mStatus = ""
         mQuantity = 0
@@ -27,6 +30,7 @@
         mCode = code
         mNom = nom
         mPrixAchat = prixAchat
+        mPrixDeVente = 0
         mDescription = descriptif
         mStatus = status
         mQuantity = quantite
@@ -36,6 +40,17 @@
         mCode = code
         mNom = nom
         mPrixAchat = prixAchat
+        mPrixDeVente = 0
+        mDescription = descriptif
+        mStatus = status
+        mQuantity = quantite
+    End Sub
+    Sub New(ByVal id As Integer, ByVal code As String, ByVal nom As String, ByVal prixAchat As Integer, prixDeVente As Integer, ByVal descriptif As String, ByVal status As String, ByVal quantite As Integer)
+        mId = id
+        mCode = code
+        mNom = nom
+        mPrixAchat = prixAchat
+        mPrixDeVente = prixDeVente
         mDescription = descriptif
         mStatus = status
         mQuantity = quantite
@@ -62,6 +77,9 @@
     Function getPrixAchat() As Integer
         Return mPrixAchat
     End Function
+    Function getPrixDeVente() As Integer
+        Return mPrixDeVente
+    End Function
     Function getDescription() As String
         Return mDescription
     End Function
@@ -84,6 +102,9 @@
     End Sub
     Sub setPrixAchat(ByVal prixAchat As Integer)
         mPrixAchat = prixAchat
+    End Sub
+    Sub setPrixDeVent(prixDeVente)
+        mPrixDeVente = prixDeVente
     End Sub
     Sub setDescription(ByVal description As String)
         mDescription = description

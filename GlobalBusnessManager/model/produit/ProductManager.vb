@@ -228,7 +228,7 @@ Public Class ProductManager
         Return idpro
     End Function
     Public Function rechercheFilter(text As String) As List(Of Product)
-        query = "SELECT * FROM produit WHERE quantite > 0 AND name LIKE '" & text & "%'"
+        query = "SELECT * FROM produit WHERE quantite > 0 AND name LIKE '%" & text & "%'"
         mListOfProduct = New List(Of Product)
         Try
             cmd = New MySqlCommand(query, mConnexion)
@@ -246,6 +246,23 @@ Public Class ProductManager
     End Function
     Public Function rechercheFilterParCode(text As String) As List(Of Product)
         query = "SELECT * FROM produit WHERE quantite > 0 AND code LIKE '" & text & "%'"
+        mListOfProduct = New List(Of Product)
+        Try
+            cmd = New MySqlCommand(query, mConnexion)
+            reader = cmd.ExecuteReader
+            While reader.Read
+                mListOfProduct.Add(New Product(reader.GetString("code"), reader.GetString("name"), reader.GetString("price"), reader.GetString("description")))
+            End While
+        Catch ex As Exception
+            MsgBox("Erreur de command. Source: " & ex.ToString)
+        Finally
+            cmd.Dispose()
+            reader.Close()
+        End Try
+        Return mListOfProduct
+    End Function
+    Public Function rechercheFilterParCodeIn(text As String) As List(Of Product)
+        query = "SELECT * FROM produit WHERE code LIKE '" & text & "%'"
         mListOfProduct = New List(Of Product)
         Try
             cmd = New MySqlCommand(query, mConnexion)

@@ -1,4 +1,5 @@
 ﻿Public Class AddCommandWin
+    'Pour une raison de code PRODUCT_NAME.Text est devenu PRODUCT_CODE.Text vis vers a
     Private listProduct As List(Of Product)
     Private productManager As ProductManager
     Private product As Product
@@ -21,45 +22,63 @@
             MsgBox("Veuillez replir corectement les champs SVP")
             Exit Sub
         End If
+        command.setDate(CDate(DATE_COMMANDE.Text))
         command.setClientName(Me.CLIENT_NAME.Text)
         command.setAdressLivraison(Me.COMMUNE_NAME.Text)
         command.setClientContact(Me.CONTACT.Text)
-        command.setNetToPay(CInt(Me.PRIX_PRODUIT_HT.Text))
-        command.setProduct(productManager.getProduct(Me.SELECT_PRODUCT_NAME.Text))
+        command.setNetToPay(CInt(Me.PRIX_PRODUIT_TTC.Text))
+        command.setProduct(productManager.getProductByCode(Me.SEARCH_TEXT.Text))
         command.setAgent(221)
         command.setCommandStat("En Cours")
         Me.Close()
     End Sub
-    Private Sub SELECT_PRODUCT_NAME_TextChange(sender As Object, e As EventArgs) Handles SELECT_PRODUCT_NAME.TextChanged
-        'Me.SELECT_PRODUCT_NAME.Items.Clear()
-        listProduct = productManager.rechercheFilter(Me.SELECT_PRODUCT_NAME.Text)
+    Private Sub SEARCH_TEXT_TextChanged(sender As Object, e As EventArgs) Handles SEARCH_TEXT.TextChanged
+        Me.SELECT_PRODUCT_NAME.Items.Clear()
+        listProduct = productManager.rechercheFilterParCode(SEARCH_TEXT.Text)
         For Each product As Product In listProduct
-            Me.SELECT_PRODUCT_NAME.Items.Add(product.getNom)
+            Me.SELECT_PRODUCT_NAME.Items.Add(product.getCode)
         Next
     End Sub
     Private Sub SELECT_PRODUCT_NAME_Selected(sender As Object, e As EventArgs) Handles SELECT_PRODUCT_NAME.SelectedValueChanged
-        product = productManager.getProduct(Me.SELECT_PRODUCT_NAME.Text)
-        Me.CODE_PRODUIT.Text = product.getCode
+        Me.SEARCH_TEXT.Text = Me.SELECT_PRODUCT_NAME.Text
+        product = productManager.getProductByCode(Me.SEARCH_TEXT.Text)
+        Me.CODE_PRODUIT.Text = product.getNom
         Me.PRODUCT_PRICE.Text = product.getPrixAchat
         PRIX_UNITAIRE_PRODUIT.Text = product.getPrixAchat
 
     End Sub
     Private Sub QUANTITE_PRODUIT_TextChanged(sender As Object, e As EventArgs) Handles QUANTITE_PRODUIT.TextChanged
-        Dim value As String
-        value = QUANTITE_PRODUIT.Text
-        If QUANTITE_PRODUIT.Text = "" Then
-            value = 1
+        If Not IsNumeric(QUANTITE_PRODUIT.Text) Then
+            Button1.Enabled = False
+            QUANTITE_PRODUIT.BackColor = Color.Red
+        Else
+            QUANTITE_PRODUIT.BackColor = Color.White
+            PRIX_PRODUIT_HT.Text = CInt(QUANTITE_PRODUIT.Text) * product.getPrixAchat
+            If Not IsNumeric(CONTACT.Text) Or Not IsNumeric(QUANTITE_PRODUIT.Text) Or CLIENT_NAME.Text = "" Or COMMUNE_NAME.Text = "" Or
+                DATE_COMMANDE.Text = "" Or LIEUR_LIVRAISON.Text = "" Or Not IsNumeric(FRAIR_LIVRAISON.Text) Then
+                Button1.Enabled = False
+            Else
+                Button1.Enabled = True
+            End If
         End If
-        PRIX_PRODUIT_HT.Text = CInt(value) * product.getPrixAchat
     End Sub
 
     Private Sub FRAIR_LIVRAISON_TextChanged(sender As Object, e As EventArgs) Handles FRAIR_LIVRAISON.TextChanged
-        Dim value As String
-        value = FRAIR_LIVRAISON.Text
-        If FRAIR_LIVRAISON.Text = "" Then
-            value = 1
+        If Not IsNumeric(FRAIR_LIVRAISON.Text) Then
+            Button1.Enabled = False
+            FRAIR_LIVRAISON.BackColor = Color.Red
+        Else
+            FRAIR_LIVRAISON.BackColor = Color.White
+            PRIX_PRODUIT_TTC.Text = CInt(PRIX_PRODUIT_HT.Text) + CInt(FRAIR_LIVRAISON.Text)
+            PRIX_PRODUIT_HT.Text = CInt(QUANTITE_PRODUIT.Text) * product.getPrixAchat
+            If Not IsNumeric(CONTACT.Text) Or Not IsNumeric(QUANTITE_PRODUIT.Text) Or CLIENT_NAME.Text = "" Or COMMUNE_NAME.Text = "" Or
+                DATE_COMMANDE.Text = "" Or LIEUR_LIVRAISON.Text = "" Or Not IsNumeric(FRAIR_LIVRAISON.Text) Then
+                Button1.Enabled = False
+            Else
+                Button1.Enabled = True
+            End If
         End If
-        PRIX_PRODUIT_TTC.Text = CInt(PRIX_PRODUIT_HT.Text) + CInt(value)
+
     End Sub
 #Region "Function for win"
     Private Sub eraseContente()
@@ -68,7 +87,7 @@
             COMMUNE_NAME.Text = ""
             CONTACT.Text = ""
 
-            SELECT_PRODUCT_NAME.Text = "Entrez"
+            SELECT_PRODUCT_NAME.Text = ""
             CODE_PRODUIT.Text = ""
             PRODUCT_PRICE.Text = "0"
 
@@ -88,6 +107,66 @@
 
     Private Sub DATE_COMMANDE_TextChanged(sender As Object, e As EventArgs) Handles DATE_COMMANDE.TextChanged
 
+    End Sub
+
+    Private Sub CONTACT_TextChanged(sender As Object, e As EventArgs) Handles CONTACT.TextChanged
+        If Not IsNumeric(CONTACT.Text) Then
+            Button1.Enabled = False
+            CONTACT.BackColor = Color.Red
+        Else
+            CONTACT.BackColor = Color.White
+            If Not IsNumeric(CONTACT.Text) Or Not IsNumeric(QUANTITE_PRODUIT.Text) Or CLIENT_NAME.Text = "" Or COMMUNE_NAME.Text = "" Or
+                DATE_COMMANDE.Text = "" Or LIEUR_LIVRAISON.Text = "" Or Not IsNumeric(FRAIR_LIVRAISON.Text) Then
+                Button1.Enabled = False
+            Else
+                Button1.Enabled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub CLIENT_NAME_TextChanged(sender As Object, e As EventArgs) Handles CLIENT_NAME.TextChanged
+        If CLIENT_NAME.Text = "" Then
+            Button1.Enabled = False
+            CLIENT_NAME.BackColor = Color.Red
+        Else
+            CLIENT_NAME.BackColor = Color.White
+            If Not IsNumeric(CONTACT.Text) Or Not IsNumeric(QUANTITE_PRODUIT.Text) Or CLIENT_NAME.Text = "" Or COMMUNE_NAME.Text = "" Or
+                DATE_COMMANDE.Text = "" Or LIEUR_LIVRAISON.Text = "" Or Not IsNumeric(FRAIR_LIVRAISON.Text) Then
+                Button1.Enabled = False
+            Else
+                Button1.Enabled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub COMMUNE_NAME_TextChanged(sender As Object, e As EventArgs) Handles COMMUNE_NAME.TextChanged
+        If COMMUNE_NAME.Text = "" Then
+            Button1.Enabled = False
+            COMMUNE_NAME.BackColor = Color.Red
+        Else
+            COMMUNE_NAME.BackColor = Color.White
+            If Not IsNumeric(CONTACT.Text) Or Not IsNumeric(QUANTITE_PRODUIT.Text) Or CLIENT_NAME.Text = "" Or COMMUNE_NAME.Text = "" Or
+                DATE_COMMANDE.Text = "" Or LIEUR_LIVRAISON.Text = "" Or Not IsNumeric(FRAIR_LIVRAISON.Text) Then
+                Button1.Enabled = False
+            Else
+                Button1.Enabled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub LIEUR_LIVRAISON_TextChanged(sender As Object, e As EventArgs) Handles LIEUR_LIVRAISON.TextChanged
+        If LIEUR_LIVRAISON.Text = "" Then
+            Button1.Enabled = False
+            LIEUR_LIVRAISON.BackColor = Color.Red
+        Else
+            LIEUR_LIVRAISON.BackColor = Color.White
+            If Not IsNumeric(CONTACT.Text) Or Not IsNumeric(QUANTITE_PRODUIT.Text) Or CLIENT_NAME.Text = "" Or COMMUNE_NAME.Text = "" Or
+                DATE_COMMANDE.Text = "" Or LIEUR_LIVRAISON.Text = "" Or Not IsNumeric(FRAIR_LIVRAISON.Text) Then
+                Button1.Enabled = False
+            Else
+                Button1.Enabled = True
+            End If
+        End If
     End Sub
 #End Region
 End Class

@@ -64,6 +64,7 @@ Partial Class MainController
         Me.BT_DEL_PRODUCT = New System.Windows.Forms.RibbonButton()
         Me.BT_EDIT_PRODUCT = New System.Windows.Forms.RibbonButton()
         Me.BT_PRODUCT_STOCK = New System.Windows.Forms.RibbonButton()
+        Me.BT_STOCK_MANAGER = New System.Windows.Forms.RibbonButton()
         Me.GP_COMMAND = New System.Windows.Forms.RibbonPanel()
         Me.BT_ADD_COMMAND = New System.Windows.Forms.RibbonButton()
         Me.BT_DELETE_COMMAND = New System.Windows.Forms.RibbonButton()
@@ -104,20 +105,31 @@ Partial Class MainController
         Me.BT_BON = New System.Windows.Forms.Button()
         Me.BT_FAIBLE = New System.Windows.Forms.Button()
         Me.BP_RUPTURE = New System.Windows.Forms.Button()
+        Me.STOCK_MANAGER_VIEW = New System.Windows.Forms.SplitContainer()
+        Me.SplitContainer3 = New System.Windows.Forms.SplitContainer()
+        Me.BT_ADD_OUT_OBJECT = New System.Windows.Forms.Button()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.OUT_PRODUCT_GRID = New System.Windows.Forms.DataGridView()
+        Me.id_sortie = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.out_date = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.out_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.out_cause = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.out_destination = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.out_quantite = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SplitContainer4 = New System.Windows.Forms.SplitContainer()
+        Me.BT_ADD_IN_OBJECT = New System.Windows.Forms.Button()
+        Me.StatusStrip2 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.IN_PRODUCT_GRID = New System.Windows.Forms.DataGridView()
+        Me.id_entrer = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.in_date = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.in_product = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.in_stock_init = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.in_quantite = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.in_stock_fin = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.STOCK_LIST = New System.Windows.Forms.DataGridView()
-        Me.id_stock = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.product_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.product_stat = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.product_quantite = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VU_COMMAND = New System.Windows.Forms.DataGridView()
-        Me.idCommand = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.produitCommand = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clientCommand = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.contactCommand = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.adressDeLivraison = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.netPayer = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.etatCommand = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.proprieteCommand = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FORNISSEUR_DATA_GRID = New System.Windows.Forms.DataGridView()
         Me.idFournisseur = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.nameFournisseur = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -137,7 +149,21 @@ Partial Class MainController
         Me.quantity = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.APP_CONFIG = New System.Windows.Forms.RibbonButton()
         Me.UpDateTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.BT_STOCK_MANAGER = New System.Windows.Forms.RibbonButton()
+        Me.id_stock = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.s_code = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.product_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.product_stat = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.product_quantite = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.idCommand = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.com_product_code = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.produitCommand = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clientCommand = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.contactCommand = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.adressDeLivraison = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.netPayer = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.etatCommand = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.proprieteCommand = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.date_command = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.VU_RAPPORT, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.STAT_BAR.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -146,6 +172,22 @@ Partial Class MainController
         Me.SplitContainer1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.STOCK_MANAGER_VIEW, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.STOCK_MANAGER_VIEW.Panel1.SuspendLayout()
+        Me.STOCK_MANAGER_VIEW.Panel2.SuspendLayout()
+        Me.STOCK_MANAGER_VIEW.SuspendLayout()
+        CType(Me.SplitContainer3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SplitContainer3.Panel1.SuspendLayout()
+        Me.SplitContainer3.Panel2.SuspendLayout()
+        Me.SplitContainer3.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
+        CType(Me.OUT_PRODUCT_GRID, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SplitContainer4, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SplitContainer4.Panel1.SuspendLayout()
+        Me.SplitContainer4.Panel2.SuspendLayout()
+        Me.SplitContainer4.SuspendLayout()
+        Me.StatusStrip2.SuspendLayout()
+        CType(Me.IN_PRODUCT_GRID, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.STOCK_LIST, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VU_COMMAND, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FORNISSEUR_DATA_GRID, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -603,6 +645,20 @@ Partial Class MainController
         Me.BT_PRODUCT_STOCK.ToolTipImage = Nothing
         Me.BT_PRODUCT_STOCK.ToolTipTitle = Nothing
         '
+        'BT_STOCK_MANAGER
+        '
+        Me.BT_STOCK_MANAGER.AltKey = Nothing
+        Me.BT_STOCK_MANAGER.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Down
+        Me.BT_STOCK_MANAGER.DropDownArrowSize = New System.Drawing.Size(5, 3)
+        Me.BT_STOCK_MANAGER.Image = CType(resources.GetObject("BT_STOCK_MANAGER.Image"), System.Drawing.Image)
+        Me.BT_STOCK_MANAGER.SmallImage = CType(resources.GetObject("BT_STOCK_MANAGER.SmallImage"), System.Drawing.Image)
+        Me.BT_STOCK_MANAGER.Style = System.Windows.Forms.RibbonButtonStyle.Normal
+        Me.BT_STOCK_MANAGER.Tag = Nothing
+        Me.BT_STOCK_MANAGER.Text = "Gestion de stock"
+        Me.BT_STOCK_MANAGER.ToolTip = Nothing
+        Me.BT_STOCK_MANAGER.ToolTipImage = Nothing
+        Me.BT_STOCK_MANAGER.ToolTipTitle = Nothing
+        '
         'GP_COMMAND
         '
         Me.GP_COMMAND.ButtonMoreVisible = False
@@ -795,6 +851,7 @@ Partial Class MainController
         '
         'SplitContainer1.Panel2
         '
+        Me.SplitContainer1.Panel2.Controls.Add(Me.STOCK_MANAGER_VIEW)
         Me.SplitContainer1.Panel2.Controls.Add(Me.STOCK_LIST)
         Me.SplitContainer1.Panel2.Controls.Add(Me.VU_COMMAND)
         Me.SplitContainer1.Panel2.Controls.Add(Me.FORNISSEUR_DATA_GRID)
@@ -1090,6 +1147,199 @@ Partial Class MainController
         Me.BP_RUPTURE.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BP_RUPTURE.UseVisualStyleBackColor = False
         '
+        'STOCK_MANAGER_VIEW
+        '
+        Me.STOCK_MANAGER_VIEW.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.STOCK_MANAGER_VIEW.Location = New System.Drawing.Point(0, 0)
+        Me.STOCK_MANAGER_VIEW.Name = "STOCK_MANAGER_VIEW"
+        '
+        'STOCK_MANAGER_VIEW.Panel1
+        '
+        Me.STOCK_MANAGER_VIEW.Panel1.Controls.Add(Me.SplitContainer3)
+        '
+        'STOCK_MANAGER_VIEW.Panel2
+        '
+        Me.STOCK_MANAGER_VIEW.Panel2.Controls.Add(Me.SplitContainer4)
+        Me.STOCK_MANAGER_VIEW.Size = New System.Drawing.Size(878, 439)
+        Me.STOCK_MANAGER_VIEW.SplitterDistance = 435
+        Me.STOCK_MANAGER_VIEW.TabIndex = 6
+        '
+        'SplitContainer3
+        '
+        Me.SplitContainer3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SplitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1
+        Me.SplitContainer3.Location = New System.Drawing.Point(0, 0)
+        Me.SplitContainer3.Name = "SplitContainer3"
+        Me.SplitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal
+        '
+        'SplitContainer3.Panel1
+        '
+        Me.SplitContainer3.Panel1.Controls.Add(Me.BT_ADD_OUT_OBJECT)
+        Me.SplitContainer3.Panel1.Controls.Add(Me.StatusStrip1)
+        '
+        'SplitContainer3.Panel2
+        '
+        Me.SplitContainer3.Panel2.Controls.Add(Me.OUT_PRODUCT_GRID)
+        Me.SplitContainer3.Size = New System.Drawing.Size(435, 439)
+        Me.SplitContainer3.SplitterDistance = 25
+        Me.SplitContainer3.TabIndex = 1
+        '
+        'BT_ADD_OUT_OBJECT
+        '
+        Me.BT_ADD_OUT_OBJECT.Location = New System.Drawing.Point(139, 3)
+        Me.BT_ADD_OUT_OBJECT.Name = "BT_ADD_OUT_OBJECT"
+        Me.BT_ADD_OUT_OBJECT.Size = New System.Drawing.Size(75, 23)
+        Me.BT_ADD_OUT_OBJECT.TabIndex = 1
+        Me.BT_ADD_OUT_OBJECT.Text = "AJOUTER"
+        Me.BT_ADD_OUT_OBJECT.UseVisualStyleBackColor = True
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel2})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 3)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(435, 22)
+        Me.StatusStrip1.TabIndex = 0
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'ToolStripStatusLabel2
+        '
+        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(105, 17)
+        Me.ToolStripStatusLabel2.Text = "LISTE DES SORTIES"
+        '
+        'OUT_PRODUCT_GRID
+        '
+        Me.OUT_PRODUCT_GRID.AllowUserToAddRows = False
+        Me.OUT_PRODUCT_GRID.AllowUserToDeleteRows = False
+        Me.OUT_PRODUCT_GRID.AllowUserToResizeRows = False
+        Me.OUT_PRODUCT_GRID.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.OUT_PRODUCT_GRID.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_sortie, Me.out_date, Me.out_name, Me.out_cause, Me.out_destination, Me.out_quantite})
+        Me.OUT_PRODUCT_GRID.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.OUT_PRODUCT_GRID.Location = New System.Drawing.Point(0, 0)
+        Me.OUT_PRODUCT_GRID.Name = "OUT_PRODUCT_GRID"
+        Me.OUT_PRODUCT_GRID.Size = New System.Drawing.Size(435, 410)
+        Me.OUT_PRODUCT_GRID.TabIndex = 0
+        '
+        'id_sortie
+        '
+        Me.id_sortie.HeaderText = "id"
+        Me.id_sortie.Name = "id_sortie"
+        Me.id_sortie.Visible = False
+        '
+        'out_date
+        '
+        Me.out_date.HeaderText = "Date"
+        Me.out_date.Name = "out_date"
+        '
+        'out_name
+        '
+        Me.out_name.HeaderText = "Produit"
+        Me.out_name.Name = "out_name"
+        '
+        'out_cause
+        '
+        Me.out_cause.HeaderText = "Cause"
+        Me.out_cause.Name = "out_cause"
+        '
+        'out_destination
+        '
+        Me.out_destination.HeaderText = "Destination"
+        Me.out_destination.Name = "out_destination"
+        '
+        'out_quantite
+        '
+        Me.out_quantite.HeaderText = "Quantité"
+        Me.out_quantite.Name = "out_quantite"
+        '
+        'SplitContainer4
+        '
+        Me.SplitContainer4.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SplitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel1
+        Me.SplitContainer4.Location = New System.Drawing.Point(0, 0)
+        Me.SplitContainer4.Name = "SplitContainer4"
+        Me.SplitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal
+        '
+        'SplitContainer4.Panel1
+        '
+        Me.SplitContainer4.Panel1.Controls.Add(Me.BT_ADD_IN_OBJECT)
+        Me.SplitContainer4.Panel1.Controls.Add(Me.StatusStrip2)
+        '
+        'SplitContainer4.Panel2
+        '
+        Me.SplitContainer4.Panel2.Controls.Add(Me.IN_PRODUCT_GRID)
+        Me.SplitContainer4.Size = New System.Drawing.Size(439, 439)
+        Me.SplitContainer4.SplitterDistance = 25
+        Me.SplitContainer4.TabIndex = 1
+        '
+        'BT_ADD_IN_OBJECT
+        '
+        Me.BT_ADD_IN_OBJECT.Location = New System.Drawing.Point(136, 3)
+        Me.BT_ADD_IN_OBJECT.Name = "BT_ADD_IN_OBJECT"
+        Me.BT_ADD_IN_OBJECT.Size = New System.Drawing.Size(75, 23)
+        Me.BT_ADD_IN_OBJECT.TabIndex = 1
+        Me.BT_ADD_IN_OBJECT.Text = "AJOUTER"
+        Me.BT_ADD_IN_OBJECT.UseVisualStyleBackColor = True
+        '
+        'StatusStrip2
+        '
+        Me.StatusStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel3})
+        Me.StatusStrip2.Location = New System.Drawing.Point(0, 3)
+        Me.StatusStrip2.Name = "StatusStrip2"
+        Me.StatusStrip2.Size = New System.Drawing.Size(439, 22)
+        Me.StatusStrip2.TabIndex = 0
+        Me.StatusStrip2.Text = "StatusStrip2"
+        '
+        'ToolStripStatusLabel3
+        '
+        Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
+        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(108, 17)
+        Me.ToolStripStatusLabel3.Text = "LISTE DES ENTREES"
+        '
+        'IN_PRODUCT_GRID
+        '
+        Me.IN_PRODUCT_GRID.AllowUserToAddRows = False
+        Me.IN_PRODUCT_GRID.AllowUserToDeleteRows = False
+        Me.IN_PRODUCT_GRID.AllowUserToResizeRows = False
+        Me.IN_PRODUCT_GRID.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.IN_PRODUCT_GRID.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_entrer, Me.in_date, Me.in_product, Me.in_stock_init, Me.in_quantite, Me.in_stock_fin})
+        Me.IN_PRODUCT_GRID.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.IN_PRODUCT_GRID.Location = New System.Drawing.Point(0, 0)
+        Me.IN_PRODUCT_GRID.Name = "IN_PRODUCT_GRID"
+        Me.IN_PRODUCT_GRID.Size = New System.Drawing.Size(439, 410)
+        Me.IN_PRODUCT_GRID.TabIndex = 0
+        '
+        'id_entrer
+        '
+        Me.id_entrer.HeaderText = "id"
+        Me.id_entrer.Name = "id_entrer"
+        Me.id_entrer.Visible = False
+        '
+        'in_date
+        '
+        Me.in_date.HeaderText = "Date"
+        Me.in_date.Name = "in_date"
+        '
+        'in_product
+        '
+        Me.in_product.HeaderText = "Produit"
+        Me.in_product.Name = "in_product"
+        '
+        'in_stock_init
+        '
+        Me.in_stock_init.HeaderText = "Stock initial"
+        Me.in_stock_init.Name = "in_stock_init"
+        '
+        'in_quantite
+        '
+        Me.in_quantite.HeaderText = "Quantite"
+        Me.in_quantite.Name = "in_quantite"
+        '
+        'in_stock_fin
+        '
+        Me.in_stock_fin.HeaderText = "Stock final"
+        Me.in_stock_fin.Name = "in_stock_fin"
+        '
         'STOCK_LIST
         '
         Me.STOCK_LIST.AllowUserToAddRows = False
@@ -1097,7 +1347,7 @@ Partial Class MainController
         Me.STOCK_LIST.AllowUserToResizeColumns = False
         Me.STOCK_LIST.AllowUserToResizeRows = False
         Me.STOCK_LIST.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.STOCK_LIST.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_stock, Me.product_name, Me.product_stat, Me.product_quantite})
+        Me.STOCK_LIST.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_stock, Me.s_code, Me.product_name, Me.product_stat, Me.product_quantite})
         Me.STOCK_LIST.Dock = System.Windows.Forms.DockStyle.Fill
         Me.STOCK_LIST.Location = New System.Drawing.Point(0, 0)
         Me.STOCK_LIST.Name = "STOCK_LIST"
@@ -1105,96 +1355,19 @@ Partial Class MainController
         Me.STOCK_LIST.TabIndex = 5
         Me.STOCK_LIST.Visible = False
         '
-        'id_stock
-        '
-        Me.id_stock.HeaderText = "id"
-        Me.id_stock.Name = "id_stock"
-        Me.id_stock.ReadOnly = True
-        Me.id_stock.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.id_stock.Visible = False
-        '
-        'product_name
-        '
-        Me.product_name.HeaderText = "nom"
-        Me.product_name.Name = "product_name"
-        Me.product_name.ReadOnly = True
-        Me.product_name.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.product_name.Width = 200
-        '
-        'product_stat
-        '
-        Me.product_stat.HeaderText = "Status"
-        Me.product_stat.Name = "product_stat"
-        Me.product_stat.ReadOnly = True
-        '
-        'product_quantite
-        '
-        Me.product_quantite.HeaderText = "Quantité"
-        Me.product_quantite.Name = "product_quantite"
-        '
         'VU_COMMAND
         '
         Me.VU_COMMAND.AllowUserToAddRows = False
         Me.VU_COMMAND.AllowUserToDeleteRows = False
         Me.VU_COMMAND.AllowUserToResizeRows = False
         Me.VU_COMMAND.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.VU_COMMAND.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idCommand, Me.produitCommand, Me.clientCommand, Me.contactCommand, Me.adressDeLivraison, Me.netPayer, Me.etatCommand, Me.proprieteCommand})
+        Me.VU_COMMAND.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idCommand, Me.com_product_code, Me.produitCommand, Me.clientCommand, Me.contactCommand, Me.adressDeLivraison, Me.netPayer, Me.etatCommand, Me.proprieteCommand, Me.date_command})
         Me.VU_COMMAND.Dock = System.Windows.Forms.DockStyle.Fill
         Me.VU_COMMAND.Location = New System.Drawing.Point(0, 0)
         Me.VU_COMMAND.Name = "VU_COMMAND"
         Me.VU_COMMAND.Size = New System.Drawing.Size(878, 439)
         Me.VU_COMMAND.TabIndex = 4
         Me.VU_COMMAND.Visible = False
-        '
-        'idCommand
-        '
-        Me.idCommand.HeaderText = "id"
-        Me.idCommand.Name = "idCommand"
-        Me.idCommand.Visible = False
-        Me.idCommand.Width = 40
-        '
-        'produitCommand
-        '
-        Me.produitCommand.HeaderText = "nom du produit"
-        Me.produitCommand.Name = "produitCommand"
-        '
-        'clientCommand
-        '
-        Me.clientCommand.HeaderText = "nom du client"
-        Me.clientCommand.Name = "clientCommand"
-        Me.clientCommand.Width = 150
-        '
-        'contactCommand
-        '
-        Me.contactCommand.HeaderText = "contact"
-        Me.contactCommand.Name = "contactCommand"
-        '
-        'adressDeLivraison
-        '
-        Me.adressDeLivraison.HeaderText = "adresse de livraison"
-        Me.adressDeLivraison.Name = "adressDeLivraison"
-        Me.adressDeLivraison.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.adressDeLivraison.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.adressDeLivraison.Width = 120
-        '
-        'netPayer
-        '
-        Me.netPayer.HeaderText = "net à payer"
-        Me.netPayer.Name = "netPayer"
-        Me.netPayer.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.netPayer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'etatCommand
-        '
-        Me.etatCommand.HeaderText = "status"
-        Me.etatCommand.Name = "etatCommand"
-        Me.etatCommand.ReadOnly = True
-        Me.etatCommand.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'proprieteCommand
-        '
-        Me.proprieteCommand.HeaderText = "Id de l'agent"
-        Me.proprieteCommand.Name = "proprieteCommand"
         '
         'FORNISSEUR_DATA_GRID
         '
@@ -1343,19 +1516,100 @@ Partial Class MainController
         '
         Me.UpDateTimer.Interval = 1000
         '
-        'BT_STOCK_MANAGER
+        'id_stock
         '
-        Me.BT_STOCK_MANAGER.AltKey = Nothing
-        Me.BT_STOCK_MANAGER.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Down
-        Me.BT_STOCK_MANAGER.DropDownArrowSize = New System.Drawing.Size(5, 3)
-        Me.BT_STOCK_MANAGER.Image = CType(resources.GetObject("BT_STOCK_MANAGER.Image"), System.Drawing.Image)
-        Me.BT_STOCK_MANAGER.SmallImage = CType(resources.GetObject("BT_STOCK_MANAGER.SmallImage"), System.Drawing.Image)
-        Me.BT_STOCK_MANAGER.Style = System.Windows.Forms.RibbonButtonStyle.Normal
-        Me.BT_STOCK_MANAGER.Tag = Nothing
-        Me.BT_STOCK_MANAGER.Text = "Gestion de stock"
-        Me.BT_STOCK_MANAGER.ToolTip = Nothing
-        Me.BT_STOCK_MANAGER.ToolTipImage = Nothing
-        Me.BT_STOCK_MANAGER.ToolTipTitle = Nothing
+        Me.id_stock.HeaderText = "id"
+        Me.id_stock.Name = "id_stock"
+        Me.id_stock.ReadOnly = True
+        Me.id_stock.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.id_stock.Visible = False
+        '
+        's_code
+        '
+        Me.s_code.HeaderText = "Code du produit"
+        Me.s_code.Name = "s_code"
+        Me.s_code.Width = 150
+        '
+        'product_name
+        '
+        Me.product_name.HeaderText = "nom"
+        Me.product_name.Name = "product_name"
+        Me.product_name.ReadOnly = True
+        Me.product_name.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.product_name.Width = 250
+        '
+        'product_stat
+        '
+        Me.product_stat.HeaderText = "Status"
+        Me.product_stat.Name = "product_stat"
+        Me.product_stat.ReadOnly = True
+        '
+        'product_quantite
+        '
+        Me.product_quantite.HeaderText = "Quantité"
+        Me.product_quantite.Name = "product_quantite"
+        Me.product_quantite.Width = 50
+        '
+        'idCommand
+        '
+        Me.idCommand.HeaderText = "id"
+        Me.idCommand.Name = "idCommand"
+        Me.idCommand.Visible = False
+        Me.idCommand.Width = 40
+        '
+        'com_product_code
+        '
+        Me.com_product_code.HeaderText = "code du produit"
+        Me.com_product_code.Name = "com_product_code"
+        Me.com_product_code.Width = 150
+        '
+        'produitCommand
+        '
+        Me.produitCommand.HeaderText = "nom du produit"
+        Me.produitCommand.Name = "produitCommand"
+        '
+        'clientCommand
+        '
+        Me.clientCommand.HeaderText = "nom du client"
+        Me.clientCommand.Name = "clientCommand"
+        Me.clientCommand.Width = 150
+        '
+        'contactCommand
+        '
+        Me.contactCommand.HeaderText = "contact"
+        Me.contactCommand.Name = "contactCommand"
+        '
+        'adressDeLivraison
+        '
+        Me.adressDeLivraison.HeaderText = "adresse de livraison"
+        Me.adressDeLivraison.Name = "adressDeLivraison"
+        Me.adressDeLivraison.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.adressDeLivraison.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.adressDeLivraison.Width = 120
+        '
+        'netPayer
+        '
+        Me.netPayer.HeaderText = "net à payer"
+        Me.netPayer.Name = "netPayer"
+        Me.netPayer.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.netPayer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'etatCommand
+        '
+        Me.etatCommand.HeaderText = "status"
+        Me.etatCommand.Name = "etatCommand"
+        Me.etatCommand.ReadOnly = True
+        Me.etatCommand.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'proprieteCommand
+        '
+        Me.proprieteCommand.HeaderText = "Id de l'agent"
+        Me.proprieteCommand.Name = "proprieteCommand"
+        '
+        'date_command
+        '
+        Me.date_command.HeaderText = "Date de la commande"
+        Me.date_command.Name = "date_command"
         '
         'MainController
         '
@@ -1381,6 +1635,26 @@ Partial Class MainController
         Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.STOCK_MANAGER_VIEW.Panel1.ResumeLayout(False)
+        Me.STOCK_MANAGER_VIEW.Panel2.ResumeLayout(False)
+        CType(Me.STOCK_MANAGER_VIEW, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.STOCK_MANAGER_VIEW.ResumeLayout(False)
+        Me.SplitContainer3.Panel1.ResumeLayout(False)
+        Me.SplitContainer3.Panel1.PerformLayout()
+        Me.SplitContainer3.Panel2.ResumeLayout(False)
+        CType(Me.SplitContainer3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SplitContainer3.ResumeLayout(False)
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
+        CType(Me.OUT_PRODUCT_GRID, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SplitContainer4.Panel1.ResumeLayout(False)
+        Me.SplitContainer4.Panel1.PerformLayout()
+        Me.SplitContainer4.Panel2.ResumeLayout(False)
+        CType(Me.SplitContainer4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SplitContainer4.ResumeLayout(False)
+        Me.StatusStrip2.ResumeLayout(False)
+        Me.StatusStrip2.PerformLayout()
+        CType(Me.IN_PRODUCT_GRID, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.STOCK_LIST, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VU_COMMAND, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FORNISSEUR_DATA_GRID, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1490,7 +1764,39 @@ Partial Class MainController
     Friend WithEvents RibbonSeparator5 As RibbonSeparator
     Friend WithEvents RibbonSeparator6 As RibbonSeparator
     Friend WithEvents BT_ENREGISTRER_SOUS As RibbonOrbMenuItem
+    Friend WithEvents STOCK_LIST As DataGridView
+    Private WithEvents BT_VUE_COM As RibbonButton
+    Friend WithEvents BT_STOCK_MANAGER As RibbonButton
+    Friend WithEvents STOCK_MANAGER_VIEW As SplitContainer
+    Friend WithEvents SplitContainer3 As SplitContainer
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
+    Friend WithEvents OUT_PRODUCT_GRID As DataGridView
+    Friend WithEvents id_sortie As DataGridViewTextBoxColumn
+    Friend WithEvents out_date As DataGridViewTextBoxColumn
+    Friend WithEvents out_name As DataGridViewTextBoxColumn
+    Friend WithEvents out_cause As DataGridViewTextBoxColumn
+    Friend WithEvents out_destination As DataGridViewTextBoxColumn
+    Friend WithEvents out_quantite As DataGridViewTextBoxColumn
+    Friend WithEvents SplitContainer4 As SplitContainer
+    Friend WithEvents StatusStrip2 As StatusStrip
+    Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
+    Friend WithEvents IN_PRODUCT_GRID As DataGridView
+    Friend WithEvents id_entrer As DataGridViewTextBoxColumn
+    Friend WithEvents in_date As DataGridViewTextBoxColumn
+    Friend WithEvents in_product As DataGridViewTextBoxColumn
+    Friend WithEvents in_stock_init As DataGridViewTextBoxColumn
+    Friend WithEvents in_quantite As DataGridViewTextBoxColumn
+    Friend WithEvents in_stock_fin As DataGridViewTextBoxColumn
+    Friend WithEvents BT_ADD_OUT_OBJECT As Button
+    Friend WithEvents BT_ADD_IN_OBJECT As Button
+    Friend WithEvents id_stock As DataGridViewTextBoxColumn
+    Friend WithEvents s_code As DataGridViewTextBoxColumn
+    Friend WithEvents product_name As DataGridViewTextBoxColumn
+    Friend WithEvents product_stat As DataGridViewTextBoxColumn
+    Friend WithEvents product_quantite As DataGridViewTextBoxColumn
     Friend WithEvents idCommand As DataGridViewTextBoxColumn
+    Friend WithEvents com_product_code As DataGridViewTextBoxColumn
     Friend WithEvents produitCommand As DataGridViewTextBoxColumn
     Friend WithEvents clientCommand As DataGridViewTextBoxColumn
     Friend WithEvents contactCommand As DataGridViewTextBoxColumn
@@ -1498,11 +1804,5 @@ Partial Class MainController
     Friend WithEvents netPayer As DataGridViewTextBoxColumn
     Friend WithEvents etatCommand As DataGridViewButtonColumn
     Friend WithEvents proprieteCommand As DataGridViewTextBoxColumn
-    Friend WithEvents STOCK_LIST As DataGridView
-    Friend WithEvents id_stock As DataGridViewTextBoxColumn
-    Friend WithEvents product_name As DataGridViewTextBoxColumn
-    Friend WithEvents product_stat As DataGridViewTextBoxColumn
-    Friend WithEvents product_quantite As DataGridViewTextBoxColumn
-    Private WithEvents BT_VUE_COM As RibbonButton
-    Friend WithEvents BT_STOCK_MANAGER As RibbonButton
+    Friend WithEvents date_command As DataGridViewTextBoxColumn
 End Class

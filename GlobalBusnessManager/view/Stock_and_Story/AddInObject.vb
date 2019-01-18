@@ -21,16 +21,8 @@
         Me.Close()
     End Sub
 
-    Private Sub PRODUCT_ID_TextChanged(sender As Object, e As EventArgs) Handles PRODUCT_ID.TextChanged
-        mListOfProduct = mProductManager.rechercheFilterParCode(Me.PRODUCT_ID.Text)
-        Me.PRODUCT_ID.DataSource = Nothing
-        Me.PRODUCT_ID.Refresh()
-
-        For Each produit As Product In mListOfProduct
-            Me.PRODUCT_ID.Items.Add(produit.getCode)
-        Next
-    End Sub
-    Private Sub PRODUCT_ID_SelectedIndexChanged(sender As Object, e As EventArgs) Handles PRODUCT_ID.LostFocus
+    Private Sub PRODUCT_ID_TextChanged(sender As Object, e As EventArgs) Handles PRODUCT_ID.SelectedValueChanged
+        Me.SEARTCH_TEXT.Text = Me.PRODUCT_ID.Text
         I_STCK_INIT.Text = mProductManager.getProductByCode(Me.PRODUCT_ID.Text).getQuantite
     End Sub
 
@@ -41,12 +33,45 @@
 
         End Try
     End Sub
+    Private Sub SEARTCH_TEXT_TextChanged(sender As Object, e As EventArgs) Handles SEARTCH_TEXT.TextChanged
+        If Me.SEARTCH_TEXT.Text <> "" Then
+            mListOfProduct = mProductManager.rechercheFilterParCodeIn(Me.SEARTCH_TEXT.Text)
+            Me.PRODUCT_ID.Items.Clear()
 
-    Private Sub I_QUANTITE_TextChanged(sender As Object, e As EventArgs) Handles I_QUANTITE.TextChanged
-        Try
-            I_STCK_FINAL.Text = CInt(I_STCK_INIT.Text) + CInt(I_QUANTITE.Text)
-        Catch ex As Exception
-
-        End Try
+            For Each produit As Product In mListOfProduct
+                Me.PRODUCT_ID.Items.Add(produit.getCode)
+            Next
+        End If
     End Sub
+    Private Sub I_QUANTITE_TextChanged(sender As Object, e As EventArgs) Handles I_QUANTITE.TextChanged
+        If Not IsNumeric(Me.I_QUANTITE.Text) Or Not IsNumeric(I_STCK_INIT.Text) Then
+            Me.BT_I_APLY.Enabled = False
+            Me.I_QUANTITE.BackColor = Color.Red
+            Me.Error_Message.Visible = True
+        Else
+
+            Me.I_QUANTITE.BackColor = Color.White
+            I_STCK_FINAL.Text = CInt(I_STCK_INIT.Text) + CInt(I_QUANTITE.Text)
+            Me.BT_I_APLY.Enabled = True
+            Me.Error_Message.Visible = False
+        End If
+    End Sub
+
+    Private Sub PRODUCT_ID_TextChanged_1(sender As Object, e As EventArgs) Handles PRODUCT_ID.TextChanged
+        If Me.PRODUCT_ID.Text = "" And Me.SEARTCH_TEXT.Text = "" Then
+            Me.BT_I_APLY.Enabled = False
+            Me.SEARTCH_TEXT.BackColor = Color.Red
+        Else
+            If Not IsNumeric(Me.I_QUANTITE.Text) Or Me.PRODUCT_ID.Text = "" Then
+                Me.Error_Message.Visible = False
+                Me.BT_I_APLY.Enabled = False
+            Else
+                Me.SEARTCH_TEXT.BackColor = Color.White
+                Me.Error_Message.Visible = False
+                Me.BT_I_APLY.Enabled = True
+            End If
+        End If
+    End Sub
+
+
 End Class

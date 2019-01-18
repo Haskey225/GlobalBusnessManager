@@ -13,17 +13,19 @@ Public Class BasicCommandManager
         mConnexion = connexion.getConnexion
     End Sub
     Public Sub addCommand(command As BasicCommand)
-        mQuery = ("INSERT INTO commande (nom_produit, client_name, contact, adresse_livraison, net_payer, status, id_agent)
-                    VALUE(@val1, @val2, @val3, @val4, @val5, @val6, @val7)")
+        mQuery = ("INSERT INTO commande (code_produit, nom_produit, client_name, contact, adresse_livraison, net_payer, status, id_agent, date_command)
+                    VALUE(@val1, @val2, @val3, @val4, @val5, @val6, @val7, @val8, @val9)")
         Try
             mCmd = New MySqlCommand(mQuery, mConnexion)
-            mCmd.Parameters.AddWithValue("@val1", command.getPoduct.getNom)
-            mCmd.Parameters.AddWithValue("@val2", command.getClientName)
-            mCmd.Parameters.AddWithValue("@val3", command.getClientContact)
-            mCmd.Parameters.AddWithValue("@val4", command.getAdressLivraison)
-            mCmd.Parameters.AddWithValue("@val5", CInt(command.getNetToPay))
-            mCmd.Parameters.AddWithValue("@val6", command.getCommandStat)
-            mCmd.Parameters.AddWithValue("@val7", CInt(command.getAgent))
+            mCmd.Parameters.AddWithValue("@val1", command.getPoduct.getCode)
+            mCmd.Parameters.AddWithValue("@val2", command.getPoduct.getNom)
+            mCmd.Parameters.AddWithValue("@val3", command.getClientName)
+            mCmd.Parameters.AddWithValue("@val4", command.getClientContact)
+            mCmd.Parameters.AddWithValue("@val5", command.getAdressLivraison)
+            mCmd.Parameters.AddWithValue("@val6", CInt(command.getNetToPay))
+            mCmd.Parameters.AddWithValue("@val7", command.getCommandStat)
+            mCmd.Parameters.AddWithValue("@val8", CInt(command.getAgent))
+            mCmd.Parameters.AddWithValue("@val9", CDate(command.getDate).ToShortDateString)
 
             mCmd.ExecuteNonQuery()
         Catch ex As Exception
@@ -100,7 +102,7 @@ Public Class BasicCommandManager
             updateCommandDataGrid()
         End Try
     End Sub
-#Region "Paralelle function"
+#Region "Paralelle function et recevoir le contenu de la datagrid"
     Private Sub eraseSpace()
         If mCmd IsNot Nothing Then
             mCmd.Dispose()
@@ -123,10 +125,10 @@ Public Class BasicCommandManager
             MainController.VU_COMMAND.Rows.Clear()
 
             While mReader.Read
-                MainController.VU_COMMAND.Rows.Add(mReader.GetString("id"), mReader.GetString("nom_produit"),
+                MainController.VU_COMMAND.Rows.Add(mReader.GetString("id"), mReader.GetString("code_produit"), mReader.GetString("nom_produit"),
                                                           mReader.GetString("client_name"), mReader.GetString("contact"), mReader.GetString("adresse_livraison"),
                                                           mReader.GetString("net_payer"), mReader.GetString("status"),
-                                                          mReader.GetString("id_agent"))
+                                                          mReader.GetString("id_agent"), mReader.GetString("date_command"))
             End While
         Catch ex As Exception
             MsgBox("Erreur de commande. Source erreur: " & ex.ToString)
@@ -143,15 +145,70 @@ Public Class BasicCommandManager
         End Try
         Return idcl
     End Function
+    Public Function getRowSelectedProductCodeValue() As String
+        Dim idcl As String
+        Try
+            idcl = MainController.VU_COMMAND.CurrentRow.Cells().Item(1).Value
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+        Return idcl
+    End Function
+    Public Function getRowSelectedProductNameValue() As String
+        Dim productName As String
+        Try
+            productName = MainController.VU_COMMAND.CurrentRow.Cells().Item(2).Value
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+        Return productName
+    End Function
+    Public Function getRowSelectedClientNameValue() As String
+        Dim clientName As String
+        Try
+            clientName = MainController.VU_COMMAND.CurrentRow.Cells().Item(3).Value
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+        Return clientName
+    End Function
+    Public Function getRowSelectedClientContactValue() As String
+        Dim clientContact As String
+        Try
+            clientContact = MainController.VU_COMMAND.CurrentRow.Cells().Item(4).Value
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+        Return clientContact
+    End Function
+    Public Function getRowSelectedClientAdresseValue() As String
+        Dim clientAdresse As String
+        Try
+            clientAdresse = MainController.VU_COMMAND.CurrentRow.Cells().Item(5).Value
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+        Return clientAdresse
+    End Function
+    Public Function getRowSelectedNetToPayValue() As Integer
+        Dim clientPay As Integer
+        Try
+            clientPay = CInt(MainController.VU_COMMAND.CurrentRow.Cells().Item(6).Value)
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+        Return clientPay
+    End Function
     Public Function getStatColumnCellSelectedValue() As String
         Dim forme As String
         Try
-            forme = MainController.VU_COMMAND.CurrentRow.Cells().Item(6).Value
+            forme = MainController.VU_COMMAND.CurrentRow.Cells().Item(7).Value
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
         Return forme
     End Function
+
     Public Function getSelectedCellContenteValue() As String
         Dim valeur As String
         Try
@@ -162,7 +219,7 @@ Public Class BasicCommandManager
         Return valeur
     End Function
     Public Function getProductNameFromCounrrantRow() As String
-        Return MainController.VU_COMMAND.CurrentRow.Cells().Item(1).Value
+        Return MainController.VU_COMMAND.CurrentRow.Cells().Item(2).Value
     End Function
 #End Region
 End Class

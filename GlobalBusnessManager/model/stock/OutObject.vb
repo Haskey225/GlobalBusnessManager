@@ -7,10 +7,10 @@
     Private mQuantite As Integer
     Sub New()
         mId = 0
-        mDate = Date.Now
-        mProductId = ""
-        mCause = ""
-        mDestination = ""
+        mDate = Date.Now.ToShortDateString
+        mProductId = "INCONU"
+        mCause = "INCONU"
+        mDestination = "INCONU"
         mQuantite = 0
     End Sub
     Sub New(idate As Date, productId As String, cause As String, destination As String, quantite As Integer)
